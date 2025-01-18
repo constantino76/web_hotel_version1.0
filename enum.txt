@@ -1,0 +1,7 @@
+public enum UserCreationStatus
+{
+    Success = 1,
+    DuplicateEmailOrPassword = 2,
+    ValidationFailed = 3,
+    Error = 4
+}

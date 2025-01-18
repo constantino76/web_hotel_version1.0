@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\WebHotelvesion1.0.props" />
+</Project>

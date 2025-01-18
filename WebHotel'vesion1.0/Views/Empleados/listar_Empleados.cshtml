@@ -1,0 +1,98 @@
+﻿@model IEnumerable<WebHotel_vesion1._0.Models.Usuario>
+
+
+
+
+
+<p class="btn btn-small" id="btn-add">
+    <a asp-action="Create" class="btn btn-small bg-dark">Agregar registro</a>
+
+</p>
+
+<h1>Listado de Usuarios</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+            
+            Rol
+            </th>
+            <th>Acciones</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+
+
+            var list = item.UsuarioRoles.ToList();
+            var cont = 0;
+            <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td> 
+                @* validamos  en caso de que este null lalista de usuario o si hay alguno para iterar  *@
+                    @if (item.UsuarioRoles != null && item.UsuarioRoles.Any())
+                    {
+
+                        foreach (var rol in item.UsuarioRoles)
+                        {
+
+                            <strong class="text-blue">@rol.Rol.Nombre;</strong>
+                        
+                        
+                        
+                        }
+
+                    
+                    }
+
+            </td>
+               
+           
+            <td>
+                   <a asp-action="Edit" asp-route-id="@item.IdUsuario"   class="btn btn-small bg-warning">Edit</a>
+                    <a asp-action="View" asp-route-id="@item.IdUsuario" class="btn btn-small bg-primary">View</a>
+                    <a asp-action="Delete"  asp-route-id="@item.IdUsuario"class="btn btn-small bg-danger">Delete</a>
+            </td>
+            </tr>
+
+
+           
+
+}
+    </tbody>
+</table>
+
+
+
+
+<style>
+
+    #btn-add{
+    
+    margin-top:100px;
+    
+    
+    
+    }
+
+
+
+</style>

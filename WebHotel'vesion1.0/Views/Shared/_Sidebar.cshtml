@@ -1,0 +1,121 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed">
+    <!-- Brand Logo -->
+    <a class="nav-link text-red" asp-controller="Home" asp-action="Privacy">
+        
+      
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar ">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            
+            <div class="info">
+                <a class="d-block">@User.Identity.Name</a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+       
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                <li class="nav-item menu-close">
+                    <a  class="nav-link active">
+                        <i class="bi bi-person-plus-fill text-yellow"></i>
+                        <p class="text-red">
+                            Usuarios
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        
+
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-controller="Empleados" asp-action="Create">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p class="text-blue">Registrar nuevo empleado</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a  class="nav-link active" asp-controller="Empleados" asp-action="listar_Empleados">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ver usuarios  </p>
+                            </a>
+                        </li>  
+
+                        </ul>
+                        </li>
+                        @* habitaciones *@
+
+                      
+                        
+                        <li class="nav-item menu-close">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Habitaciones
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Ver habitaciones </p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Editar Habitaciones</p>
+                                    </a>
+                                </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Inactive Page</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Simple Link
+                            <span class="">New</span>
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
+
+                   <style>.main-sidebar{
+                   
+                 
+                   scroll-margin-top:50px !important
+                   
+                   
+                   
+                   
+                   
+                   }</style>
