@@ -4,7 +4,10 @@
     {
         Success = 1,
         DuplicateEmailOrPassword = 2,
-        ValidationFailed = 3,
-        Error = 4
+       ErrorConexionString= 3,
+        UpdateError = 4,
+        DeleteSuccess=5,
+        DeleteError=6
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AppLogin.Data;
 using AppLogin.Logica;
+using DocumentFormat.OpenXml.Office2019.Drawing.Model3D;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -105,7 +106,7 @@ namespace WebHotel_vesion1._0.Controllers
 
         }
 
-        // GET: EmpleadosController/Edit/5
+        // GET: EmpleadosController/Edit/5    
         public async  Task< ActionResult> Edit(string  id)
 
         {
@@ -116,6 +117,7 @@ namespace WebHotel_vesion1._0.Controllers
                 IdUsuario = user.IdUsuario,
                 NombreCompleto = user.NombreCompleto, 
                 Correo = user.Correo, 
+                Clave=user.Clave,
                 Roles = await _irol.GetRols()
 
             };
@@ -125,16 +127,44 @@ namespace WebHotel_vesion1._0.Controllers
         // POST: EmpleadosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit( UsuarioViewModel userviewmodel)
         {
+             
+            if (userviewmodel == null) {
+
+
+                return Content("El modelo no puede ser nulo");
+
+            }
+
             try
-            {
-                return RedirectToAction(nameof(Index));
+            { Usuario user= new Usuario {
+            
+            IdUsuario=userviewmodel.IdUsuario,
+            NombreCompleto=userviewmodel.NombreCompleto,
+            Correo=userviewmodel.Correo,   
+            Clave=userviewmodel.Clave,  
+            
+            
+            };
+                //llamada para el metodo de actualizar usuario
+             _iusuario.Update(user);
+
+                // llamada al metodo para almacenar el IdUsuario y el IdRol 
+                UsuarioRol usuariorol = new UsuarioRol {
+
+                    IdUsuario = userviewmodel.IdUsuario,
+               IdRol=userviewmodel.IdRol,   
+                };
+
+                _usuarioRol.InsertUserRol(usuariorol);
             }
             catch
             {
+                throw new Exception("Ha ocurrido un error ");
                 return View();
             }
+            return View();
         }
 
         // GET: EmpleadosController/Delete/5

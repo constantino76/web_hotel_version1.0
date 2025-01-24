@@ -282,3 +282,7 @@ C:\CursosWeb\WebHotel'vesion1.0\WebHotel'vesion1.0\obj\Debug\net8.0\refint\WebHo
 C:\CursosWeb\WebHotel'vesion1.0\WebHotel'vesion1.0\obj\Debug\net8.0\WebHotelvesion1.0.pdb
 C:\CursosWeb\WebHotel'vesion1.0\WebHotel'vesion1.0\obj\Debug\net8.0\WebHotelvesion1.0.genruntimeconfig.cache
 C:\CursosWeb\WebHotel'vesion1.0\WebHotel'vesion1.0\obj\Debug\net8.0\ref\WebHotelvesion1.0.dll
+C:\CursosWeb\WebHotel'vesion1.0\WebHotel'vesion1.0\obj\Debug\net8.0\WebHotelvesion1.0.sourcelink.json
+C:\CursosWeb\WebHotel'vesion1.0\WebHotel'vesion1.0\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
+C:\CursosWeb\WebHotel'vesion1.0\WebHotel'vesion1.0\bin\Debug\net8.0\DocumentFormat.OpenXml.Framework.dll
+C:\CursosWeb\WebHotel'vesion1.0\WebHotel'vesion1.0\bin\Debug\net8.0\System.IO.Packaging.dll
