@@ -35,7 +35,7 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="IdUsuario" class="control-label"></label>
-                        <input asp-for="IdUsuario" class="form-control" />
+                        <input asp-for="IdUsuario" class="form-control" readonly />
                         <span asp-validation-for="IdUsuario" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -79,6 +79,12 @@
 </div>
 
 <center>
-    <a asp-action="listar_Empleados" class="bg-blue">Atras</a>
+    <a asp-action="listar_Empleados" class=" btn btn-sm bg-blue">Atras</a>
 </center>
 
+                          <style>
+
+                              body{background-color: black}
+
+
+                          </style>

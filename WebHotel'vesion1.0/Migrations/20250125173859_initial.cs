@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebHotel_vesion1._0.Migrations
 {
     /// <inheritdoc />
-    public partial class _151202 : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,7 +50,7 @@ namespace WebHotel_vesion1._0.Migrations
                     IdUsuario = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     NombreCompleto = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Correo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Clave = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
+                    Clave = table.Column<string>(type: "nvarchar(max)", maxLength: 20000, nullable: false)
                 },
                 constraints: table =>
                 {

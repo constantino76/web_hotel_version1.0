@@ -60,28 +60,28 @@
 <hr />
 
     <div class=" row justify-content-center"style="margin-top:100px">
-        <div class="col-12 col-md-8 col-lg-6">
-
+        <div class="col-12 col-md-8 ">
+                <h2 class="text-center">Modulo de registro de Usuarios</h2>
 
             <form asp-controller="Empleados" asp-action="Create" method="post" class="bg-dark" id="formulario_registro">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 
                 <div class="row justify-content-center mt-1">
-                    <div class="col-sm-6 col-md-6 col-lg-5">
+                    <div class="col-md-8 col-lg-11">
                         <div class="form-group">
                             <label asp-for="IdUsuario" class="control-label"></label>
-                            <input asp-for="IdUsuario" class="form-control" />
+                            <input asp-for="IdUsuario" class="form-control" required/>    
                             <span asp-validation-for="IdUsuario" class="text-danger"></span>
                         </div>
 
 
                     </div>
 
-                    <div class="col-sm-6 col-md-6 col-lg-5">
+                    <div class=" col-md-8 col-lg-11">
                         <div class="form-group">
                             <label asp-for="NombreCompleto" class="control-label"></label>
-                            <input asp-for="NombreCompleto" class="form-control" />
+                            <input asp-for="NombreCompleto" class="form-control" required />
                             <span asp-validation-for="NombreCompleto" class="text-danger"></span>
                         </div>
                     </div>
@@ -90,22 +90,22 @@
 
 
                 <div class="row justify-content-center mt-1">
-                    <div class="col-sm-6 col-md-6 col-lg-5">
+                    <div class="col-md-8 col-lg-11">
 
 
                         <div class="form-group">
                             <label asp-for="Correo" class="control-label"></label>
-                            <input asp-for="Correo" class="form-control" />
+                            <input asp-for="Correo" class="form-control" required />
                             <span asp-validation-for="Correo" class="text-danger"></span>
                         </div>
 
                     </div>
-                    <div class="col-sm-6 col-md-6 col-lg-5">
+                    <div class="col-md-8 col-lg-11">
 
 
                         <div class="form-group">
                             <label asp-for="Clave" class="control-label"></label>
-                            <input asp-for="Clave" class="form-control" />
+                            <input asp-for="Clave" class="form-control" required />
                             <span asp-validation-for="Clave" class="text-danger"></span>
                         </div>
                     </div>
@@ -114,24 +114,35 @@
                 </div>
 
                
+                <div class="row   mt-2"style="width:30% !important;margin-left:4%">
+
+                    <div class="col-12 col-md-6  col-lg-8 ">
+
+                                <div class="form-group  bg-white justify-content-center ;">
+                                <label for="IdRol" style="color:black; padding-left:6px">Rol</label>
+                                <select name="IdRol" class="form-control  " required style="background-color: lightblue; color: darkblue">
+                                    @foreach (var rol in Model.Roles)
+                                    {
+                                        <option value="@rol.IdRol">@rol.Nombre</option>
+                                    }
+                                </select>
+                            </div>
+
+                   
+                    
 
 
-                <div class="form-group ">
-                    <label for="IdRol"style="background-color:crimson; padding-left:6px">Rol</label>
-                    <select name="IdRol" class="form-control" required style="background-color: lightblue; color: darkblue">
-                        @foreach (var rol in  Model.Roles)
-                        {
-                            <option  value="@rol.IdRol">@rol.Nombre</option>
-                        }
-                    </select>
-                </div>
+
+                </div></div>
+
+                
 
 
 
 
                 <div class="row justify-content-center">
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="Agregar registro" class="btn btn-primary btn-outline" />
                     </div>
 
                 </div>
@@ -163,8 +174,8 @@
 
     
     body{
-       background-color:#0E1833 !important
-    }
+       background-color:black 
+    } 
     form{  
      border:2px solid white;
     border-radius:10px

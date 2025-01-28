@@ -12,6 +12,7 @@ namespace WebHotel_vesion1._0.Models
         public string Correo { get; set; }
         public string Clave { get; set; }
         public ICollection<UsuarioRol> UsuarioRoles { get; set; }
+    
         public ICollection<Reserva> Reservas { get; set; } // Relación con Reservas
 
     }

@@ -14,14 +14,14 @@
 </head>
 <body>
    
-    @if(User.IsInRole("Administrador"))
+    @if(User.IsInRole("Administrador")||User.IsInRole("Empleado"))
     {
         <partial name="_Navbar" />
         <partial name="_Sidebar" />
 
 
     }
-    else if (!User.IsInRole("Administrador"))
+    else 
     {
         <partial name="_Navbar" />
         <partial name="_Index" /> 

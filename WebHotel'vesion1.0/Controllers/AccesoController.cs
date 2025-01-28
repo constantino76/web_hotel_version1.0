@@ -63,14 +63,14 @@ namespace WebHotel_vesion1._0.Controllers
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
                 //if rol is Administrador rediect to  action ModuloMaestro
-               if (Rol.Equals("Administrador")) {
+               if (Rol.Equals("Administrador")||Rol.Equals("Empleado")) {
 
                  return RedirectToAction("ModuloMaestro", "Home");
                 
                 
                 }
                 else
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("privacy", "Home");
 
             }
             ViewBag.Mensaje = "Usuario no encontrado";

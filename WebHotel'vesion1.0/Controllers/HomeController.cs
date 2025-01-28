@@ -17,7 +17,7 @@ namespace WebHotel_vesion1._0.Controllers
             _logger = logger;
         }
 
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Empleado")]
         public IActionResult ModuloMaestro() {
 
             return View();

@@ -17,13 +17,14 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
         private readonly AppDbContext _context;
         // instancia que almacenara el usuario que  se actualizara 
         private static Usuario usuario_;
-        private readonly PasswordHasher<Usuario> passwordhasher;
-        private static string password;
+      
+
         public UsuarioRepositorio(AppDbContext context) {
 
             _context = context;
+        
             usuario_ = new Usuario();
-            passwordhasher = new PasswordHasher<Usuario>();
+            
         }
         public async  Task<UserCreationStatus> Create(Usuario usuario)
         { // initial validation by prevent repeat username or password in database
@@ -38,9 +39,7 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
                 }
 
 
-                // add encrytation validation 
-                // string clave= _passwordHasher.HashPassword(null, usuario.Clave);
-                usuario.Clave = passwordhasher.HashPassword(null, usuario.Clave);
+              
 
                 _context.Usuarios.Add(usuario);
                 _context.SaveChanges();
@@ -53,16 +52,11 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             {
                 Console.WriteLine("Duplicado de clave primaria");
 
-                return UserCreationStatus.DuplicateEmailOrPassword;
-            }
-
-
-            catch (DbUpdateException ex) {
-
-                Console.WriteLine("Excepcion  ", ex.ToString());
                 return UserCreationStatus.ErrorConexionString;
-
             }
+
+
+           
 
 
             return UserCreationStatus.Success;
@@ -84,7 +78,7 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             return users;
         }
 
-
+        //kkk
 
         public async Task<Usuario> getUser(string id)
         {
@@ -97,7 +91,7 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
                 }
                 var  user = _context.Usuarios.Include(e => e.UsuarioRoles).ThenInclude(ur => ur.Rol).Where(u => u.IdUsuario == id).FirstOrDefault();
                //int   result = VerificaPassword(user,  id);
-                user.Clave = password;
+           
 
                 return user;
             }
@@ -123,24 +117,10 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             }
 
             try {
-                //  var   user_ =  _context.Usuarios.Include(e => e.UsuarioRoles).Where(u =>  u.Correo == email);
-                var user_ =  _context.Usuarios.Include(e => e.UsuarioRoles).ThenInclude(ur => ur.Rol) .FirstOrDefault(u =>  u.Correo == email);
+               
+                var user_ =  _context.Usuarios.Include(e => e.UsuarioRoles).ThenInclude(ur => ur.Rol) .FirstOrDefault(u =>  u.Correo == email&& u.Clave==clave);
 
-                //verifiamos el password ingresado por el usuario on el de la base de datos
-                //if (user_ != null)
-                //{
-                //    var result = passwordhasher.VerifyHashedPassword(user_, user_.Clave, clave);
-                //    password = clave;
-                //    if (result != PasswordVerificationResult.Success)
-                //    {
-
-                //        Console.WriteLine("Contrasenia incorrecta");
-                //        return null;
-
-                //    }
-
-
-                //}
+                
                 return  user_;
                 // validamos la contrasenia 
                         }
@@ -155,17 +135,18 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
         }
 
         public  async Task<bool> Update(Usuario usuario)
-        { // encriptamos la contrasenia 
-            usuario.Clave = passwordhasher.HashPassword(null, usuario.Clave);
+        { 
 
             try
             {
+               
+
                 _context.Update(usuario);
                 _context.SaveChanges();
             }
 
             catch (DbUpdateException ex ) {
-                throw  new Exception("Error al actualizar el usuario");
+                 
                 return false;
             
             
@@ -176,16 +157,16 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
         // metodo para verificacion de la contrasenia para cuando va actualizar los datos el usuario
         
 
-        public int  VerificaPassword(Usuario usuario,string password) {
+        //public int  VerificaPassword(Usuario usuario,string password) {
 
-            var result = passwordhasher.VerifyHashedPassword(usuario, usuario.Clave, password);
+        //    var result = passwordhasher.VerifyHashedPassword(usuario, usuario.Clave, password);
 
-            if (result != PasswordVerificationResult.Success) //  verifica si la comprobacion ha sido  exitosa 
-            {
-                return 0;
-            }
+        //    if (result != PasswordVerificationResult.Success) //  verifica si la comprobacion ha sido  exitosa 
+        //    {
+        //        return 0;
+        //    }
 
-            return 1;
-        }
+        //    return 1;
+        //}
     }
 }

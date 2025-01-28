@@ -8,7 +8,7 @@ namespace WebHotel_vesion1._0.Repositories.Interfaces
     {
         public  Task<UserCreationStatus> Create(Usuario user);
         public Task<bool> Update(Usuario usuario); 
-        public Task<bool> Delete();
+        public Task<bool> Delete(int id);
         public Task<Usuario> getUser(string id);
         public Task<Usuario> getUserInitSesion(string clave,string email);
         public Task<List<Usuario>> getAll();

@@ -10,7 +10,8 @@ using WebHotel_vesion1._0.Repositories.Interfaces;
 
 namespace WebHotel_vesion1._0.Controllers
 {
-    [Authorize(Roles = "Administrador")]
+    [Authorize]
+   
     public class EmpleadosController : Controller
     {
         private readonly IUsuario _iusuario;
@@ -26,6 +27,7 @@ namespace WebHotel_vesion1._0.Controllers
 
 
         // GET: EmpleadosController
+        [Authorize(Roles ="Administrador ,Empleado")]
         public async Task<ActionResult> listar_Empleados() {
             List<Usuario> listempleados = new List<Usuario>();
 
@@ -43,6 +45,7 @@ namespace WebHotel_vesion1._0.Controllers
         }
 
         // GET: EmpleadosController/Create
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Create()
         {
             var usuariorol = new UsuarioViewModel {
@@ -65,8 +68,13 @@ namespace WebHotel_vesion1._0.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(UsuarioViewModel user)
         {
+       //     Success = 1,
+       // DuplicateEmailOrPassword = 2,
+       //ErrorConexionString = 3,
+       // UpdateError = 4,
+       // DeleteSuccess = 5,
+       // DeleteError = 6
 
-           
             // initialize properties
 
 
@@ -87,13 +95,14 @@ namespace WebHotel_vesion1._0.Controllers
             //initialization object usuariorol
 
 
+
             if (valor == 1)
             {
 
                 var userrol = new UsuarioRol
                 {
                     IdUsuario = user.IdUsuario,
-                    IdRol = user.IdRol,
+                    IdRol = user.IdRol,  
                 };
                 var status_ = await _usuarioRol.InsertUserRol(userrol);
 
@@ -106,7 +115,8 @@ namespace WebHotel_vesion1._0.Controllers
 
         }
 
-        // GET: EmpleadosController/Edit/5    
+        // GET: EmpleadosController/Edit/5
+        // metodo edit para seleccionar mediante el id usuario 
         public async  Task< ActionResult> Edit(string  id)
 
         {
@@ -127,7 +137,7 @@ namespace WebHotel_vesion1._0.Controllers
         // POST: EmpleadosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit( UsuarioViewModel userviewmodel)
+        public  async Task<IActionResult> Edit( UsuarioViewModel userviewmodel)
         {
              
             if (userviewmodel == null) {
@@ -138,54 +148,74 @@ namespace WebHotel_vesion1._0.Controllers
             }
 
             try
-            { Usuario user= new Usuario {
-            
-            IdUsuario=userviewmodel.IdUsuario,
-            NombreCompleto=userviewmodel.NombreCompleto,
-            Correo=userviewmodel.Correo,   
-            Clave=userviewmodel.Clave,  
-            
-            
-            };
-                //llamada para el metodo de actualizar usuario
-             _iusuario.Update(user);
-
-                // llamada al metodo para almacenar el IdUsuario y el IdRol 
-                UsuarioRol usuariorol = new UsuarioRol {
+            { //  carga de las propiedades con los datos del modelo 
+                Usuario user = new Usuario
+                {
 
                     IdUsuario = userviewmodel.IdUsuario,
-               IdRol=userviewmodel.IdRol,   
-                };
+                    NombreCompleto = userviewmodel.NombreCompleto,
+                    Correo = userviewmodel.Correo,
+                    Clave = userviewmodel.Clave,
 
-                _usuarioRol.InsertUserRol(usuariorol);
+
+                };
+                //llamada para el metodo de actualizar usuario
+                bool result = await _iusuario.Update(user);
+                if (result) { 
+
+                    // llamada al metodo para almacenar el IdUsuario y el IdRol 
+                    UsuarioRol usuariorol = new UsuarioRol
+                    {
+
+                        IdUsuario = userviewmodel.IdUsuario,
+                        IdRol = userviewmodel.IdRol,
+                    };
+
+                
+                    _usuarioRol.UpdateUserRol(usuariorol);
+            }
             }
             catch
             {
                 throw new Exception("Ha ocurrido un error ");
                 return View();
             }
-            return View();
+            
+            var roles = new UsuarioViewModel { // almacenamos los roles en la vista para que en caso de retorno no de null a momento de listar los roles 
+                Roles = await  _irol.GetRols() 
+            
+            
+            };
+            return View(roles);
         }
 
         // GET: EmpleadosController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(string  id)
         {
-            return View();
+            var user = await _iusuario.getUser(id);
+            return View(user);
         }
 
         // POST: EmpleadosController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(UsuarioViewModel user)
         {
+            if (!ModelState.IsValid) {
+
+                return RedirectToAction("listar_Usuarios");
+            
+            }
+
             try
             {
-                return RedirectToAction(nameof(Index));
+             
             }
             catch
             {
                 return View();
             }
+            return View();
         }
     }
 }

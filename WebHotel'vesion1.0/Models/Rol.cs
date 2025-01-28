@@ -6,5 +6,6 @@
         public string Nombre { get; set; }
 
         public ICollection<UsuarioRol> UsuarioRoles { get; set; }
+       
     }
 }
