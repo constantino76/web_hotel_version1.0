@@ -18,9 +18,9 @@
         case UserCreationStatus.Success:
             <div class=" row  justify-content-center mensaje" style="padding-top:200px !important">
 
-                <div class="col-12 col-md-8 col-lg-6">
+                <div class="col-6 alert  alert-success" role="alert">
 
-                    <h3 class="bg-success"> usuario registrado satisfactoriamente</h3>
+                    <h3 class="text-center"> usuario registrado satisfactoriamente</h3>
                 </div>
             </div>
 
@@ -28,9 +28,9 @@
             break;
 
         case UserCreationStatus.DuplicateEmailOrPassword:
-            <div class=" row justify-content-center m mensaje" style="padding-top:200px !important">
+            <div class=" row justify-content-center  mensaje" style="padding-top:200px !important">
 
-                <div class="col-12 col-md-8 col-lg-6">
+                <div class="col-6 alert  alert-danger" role="alert">
 
                     <h3 class="bg-danger">Error  password o email duplicados</h3>
                 </div>
@@ -59,30 +59,48 @@
 
 <hr />
 
-    <div class=" row justify-content-center"style="margin-top:100px">
+    <div class="row justify-content-center"style="margin-top:100px">
         <div class="col-12 col-md-8 ">
-                <h2 class="text-center">Modulo de registro de Usuarios</h2>
+                <h2 class="text-center text-white">Modulo de registro de Usuarios</h2>
 
             <form asp-controller="Empleados" asp-action="Create" method="post" class="bg-dark" id="formulario_registro">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 
                 <div class="row justify-content-center mt-1">
-                    <div class="col-md-8 col-lg-11">
+                    <div class="col-12">
+                     
                         <div class="form-group">
+                          
                             <label asp-for="IdUsuario" class="control-label"></label>
-                            <input asp-for="IdUsuario" class="form-control" required/>    
-                            <span asp-validation-for="IdUsuario" class="text-danger"></span>
+                            <div class="input-group bg-white">
+                                <div class="input-group-prepend w-100">
+                                    <span ><i class="fas fa-id-card"></i></span>
+                                    <input asp-for="IdUsuario" class="form-control" required placeholder="IdUsuario" />
+                                    <span asp-validation-for="IdUsuario" class="text-danger"></span>
+                                </div>
+                               
+                            </div>
                         </div>
 
 
                     </div>
-
-                    <div class=" col-md-8 col-lg-11">
+                     </div>
+                       <div class="row justify-content-center mt-1 ">
+                    <div class=" col-12">
                         <div class="form-group">
                             <label asp-for="NombreCompleto" class="control-label"></label>
-                            <input asp-for="NombreCompleto" class="form-control" required />
-                            <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                            <div class="input-group bg-white">
+                                <div class="input-group-prepend w-100">
+                                    <span><i class="fa-solid fa-user"></i></span>
+                                    <input asp-for="NombreCompleto" class="form-control" required placeholder="Nombre Completo" />
+                                    <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                                </div>
+
+
+
+                            </div>
+                           
                         </div>
                     </div>
 
@@ -90,60 +108,68 @@
 
 
                 <div class="row justify-content-center mt-1">
-                    <div class="col-md-8 col-lg-11">
+                    <div class="col-12">
 
 
                         <div class="form-group">
                             <label asp-for="Correo" class="control-label"></label>
-                            <input asp-for="Correo" class="form-control" required />
-                            <span asp-validation-for="Correo" class="text-danger"></span>
+                            <div class="input-group bg-white">
+                                <div class="input-group-prepend">
+                                    <span><i class="fa-solid fa-envelope"></i></span>
+                                    <input asp-for="Correo" class="form-control" required placeholder="Correo" />
+                                    <span asp-validation-for="Correo" class="text-danger"></span>
+                                </div>
+
+
+
+                            </div>
+
                         </div>
 
                     </div>
-                    <div class="col-md-8 col-lg-11">
+                    </div>
 
-
+                <div class="row ">
+                    <div class="col-7 ">
                         <div class="form-group">
                             <label asp-for="Clave" class="control-label"></label>
-                            <input asp-for="Clave" class="form-control" required />
-                            <span asp-validation-for="Clave" class="text-danger"></span>
+                            <div class="input-group bg-white">
+                                <div class="input-group-prepend"></div>
+                                <span><i class="fa-solid fa-key"></i></span>
+                                <input asp-for="Clave" class="form-control" required placeholder="Clave" />
+                                <span asp-validation-for="Clave" class="text-danger"></span>
+                            </div>
+                            
                         </div>
                     </div>
 
-
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="IdRol" class="control-label">Rol</label>
+                            <select name="IdRol" class="form-control bg-light text-dark" required>
+                                @foreach (var rol in Model.Roles)
+                                {
+                                    <option value="@rol.IdRol">@rol.Nombre</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
                
-                <div class="row   mt-2"style="width:30% !important;margin-left:4%">
-
-                    <div class="col-12 col-md-6  col-lg-8 ">
-
-                                <div class="form-group  bg-white justify-content-center ;">
-                                <label for="IdRol" style="color:black; padding-left:6px">Rol</label>
-                                <select name="IdRol" class="form-control  " required style="background-color: lightblue; color: darkblue">
-                                    @foreach (var rol in Model.Roles)
-                                    {
-                                        <option value="@rol.IdRol">@rol.Nombre</option>
-                                    }
-                                </select>
-                            </div>
-
-                   
-                    
-
-
-
-                </div></div>
-
-                
-
-
-
+       
 
                 <div class="row justify-content-center">
-                    <div class="form-group">
-                        <input type="submit" value="Agregar registro" class="btn btn-primary btn-outline" />
+                    <div class="col-12 col-md-4"style="margin-bottom:2px">  <a asp-action="listar_Empleados" class="btn   bg-warning btn-outline">Atras</a>
+                        </div>
+
+                    <div class="col-12 col-md-4">
+                        
+                            <input type="submit" value="Agregar registro" class="btn btn-success" />
+                       
                     </div>
+
+
 
                 </div>
             </form>
@@ -152,16 +178,14 @@
            
  
 
-<div class="row justify-content-center">
-    <a asp-action="listar_Empleados" class=" btn btn-lg bg-yellow mt-5">Atras</a>
-</div>
+
 
 </body>
 
 
 
 
-
+</div>
 
         </div>
 
@@ -172,12 +196,36 @@
 </html>
 <style>
 
+    #IdUsuario , #NombreCompleto , #Correo{
+      
+        border:3px solid white;
     
+    
+     
+
+ font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+   
+
+       }
+
+    
+    #Clave, #IdRol {
+        border: 3px solid white;
+       
+       
+        font-family: 'Montserrat', sans-serif;
+       
+     
+       
+    }
+
+
     body{
-       background-color:black 
+       background-color:darkslategray
     } 
     form{  
-     border:2px solid white;
+     border:4px solid white;
     border-radius:10px
     }
     label{
@@ -186,5 +234,12 @@
     
     }
 
+    
 
+    .input-group{ 
+        color:crimson !important;
+    margin-left:4px !important;
+  
+    width:99%
+    }
 </style>

@@ -23,13 +23,16 @@
 
 <hr />
 <div class="row  justify-content-center " style="margin-top:100px">
-    <div class="col-12 col-md-8 col-lg-6 ">
+    <div class="col-12 col-md-8 ">
+        <div class="col-12 md-8">
+            <h3 class="card-text bg-success" style="width:20%">Edicion </h3>
+        </div>
 
         <div class="card ">
 
             <div class="card-body bg-dark">
 
-                <h3 class="card-text bg-success"style="width:20%">Edicion </h3>
+               
 
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -43,27 +46,57 @@
                         <input asp-for="NombreCompleto" class="form-control" />
                         <span asp-validation-for="NombreCompleto" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Correo" class="control-label"></label>
-                        <input asp-for="Correo" class="form-control" />
-                        <span asp-validation-for="Correo" class="text-danger"></span>
+                   
+
+                       
+                            <div class="form-group">
+                                <label asp-for="Correo" class="control-label"></label>
+                                <input asp-for="Correo" class="form-control" />
+                                <span asp-validation-for="Correo" class="text-danger"></span>
+                            </div>
+
+
+                    <div class="row">
+                        <div class="col-7">
+
+                            <div class="form-group">
+                                <label asp-for="Clave" class="control-label"></label>
+                                <input asp-for="Clave" class="form-control" />
+                                <span asp-validation-for="Clave" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-4">
+
+                            <div class="form-group">
+
+                                <label for="IdRol"> Rol</label>
+                                <select name="IdRol" class="form-control bg-primary text-dark">
+                                    @foreach (var rol in Model.Roles)
+                                    {
+
+
+                                        <option value="@rol.IdRol" style="cursor:crosshair">@rol.Nombre</option>
+
+                                    }
+
+                                </select>
+
+
+
+                            </div>
+                            
+
+
+                        </div>
+
+
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Clave" class="control-label"></label>
-                        <input asp-for="Clave" class="form-control" />
-                        <span asp-validation-for="Clave" class="text-danger"></span>
-                    </div>
-                    <label for="IdRol">Rol</label>
-                    <select name="IdRol">
-                        @foreach (var rol in Model.Roles)
-                        {
-
-
-                            <option value="@rol.IdRol">@rol.Nombre</option>
-
-                        }
-
-                    </select>
+                  
+                    
+                   
                     <div class="form-group">
                         <input type="submit"  value="Salvar cambios" class="btn btn-small  bg-success" />
                     </div>

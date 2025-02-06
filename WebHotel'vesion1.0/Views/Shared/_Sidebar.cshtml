@@ -17,12 +17,14 @@
     <div class="sidebar ">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="info justify-content-lg-around"><h3>Hotel Admin</h3></div>
             
-            <div class="info">
-                <a class="d-block">@User.Identity.Name</a>
-            </div>
         </div>
-
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info justify-content-center>
+            <a class="d-block">@User.Identity.Name</a>
+        </div>
+        </div>
         <!-- SidebarSearch Form -->
        
 
@@ -44,15 +46,15 @@
 
                         <li class="nav-item">
                             <a class="nav-link active" asp-controller="Empleados" asp-action="Create">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="text-blue">Registrar nuevo empleado</p>
+                                <i class="bi bi-plus-lg bg-yellow"></i>
+                                <p class="text-blue">Registrar nuevo usuario</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a  class="nav-link active" asp-controller="Empleados" asp-action="listar_Empleados">
-                                <i class="far fa-circle nav-icon" ></i>
-                                <p>Ver usuarios  </p>
+                                <i class="bi bi-eye bg-success"></i>
+                                <p class="text-blue">Ver usuarios  </p>
                             </a>
                         </li>  
 
@@ -64,7 +66,7 @@
                         
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
-                        <i class="bi bi-door-closed" style="color:gold"></i>
+                        <i class="bi bi-door-open  bg-warning"></i>
                                 <p>
                                     Habitaciones
                                     <i class="right fas fa-angle-left"></i>

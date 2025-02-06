@@ -199,22 +199,16 @@ namespace WebHotel_vesion1._0.Controllers
         // POST: EmpleadosController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(UsuarioViewModel user)
+        public async Task<ActionResult> DeleteUser(string IdUsuario)
         {
-            if (!ModelState.IsValid) {
+           
 
-                return RedirectToAction("listar_Usuarios");
+              bool result =await   _iusuario.Delete(IdUsuario);
+
+                return RedirectToAction("listar_Empleados");
             
-            }
-
-            try
-            {
-             
-            }
-            catch
-            {
-                return View();
-            }
+         
+           
             return View();
         }
     }

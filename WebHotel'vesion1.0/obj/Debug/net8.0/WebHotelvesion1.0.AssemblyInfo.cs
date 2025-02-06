@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebHotelvesion1.0")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d01d8d0496d59abdef4428414f6298855b426a2a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edef000aa0e19be43a2927993c5c66724545190a")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebHotelvesion1.0")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebHotelvesion1.0")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

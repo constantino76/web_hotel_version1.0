@@ -10,6 +10,7 @@
 </p>
 
 <h1>Listado de Usuarios</h1>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -67,9 +68,9 @@
                
            
             <td>
-                   <a asp-action="Edit" asp-route-id="@item.IdUsuario"   class="btn btn-small bg-warning">Edit</a>
-                    <a asp-action="View" asp-route-id="@item.IdUsuario" class="btn btn-small bg-primary">View</a>
-                    <a asp-action="Delete"  asp-route-id="@item.IdUsuario"class="btn btn-small bg-danger">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdUsuario" class="btn btn-small bg-warning"><i class="fa-solid fa-user-pen text-white"></i>Editar</a>
+                    <a asp-action="View" asp-route-id="@item.IdUsuario" class="btn btn-small bg-primary"><i class="fa-regular fa-eye"></i>Ver</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdUsuario" class="btn btn-small bg-danger"><i class="fa-solid fa-trash"></i>Eliminar</a>
             </td>
             </tr>
 

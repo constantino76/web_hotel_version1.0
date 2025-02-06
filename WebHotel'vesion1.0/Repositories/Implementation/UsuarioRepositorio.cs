@@ -64,11 +64,7 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
         }
 
-        public Task<bool> Delete()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public async Task<List<Usuario>> getAll()// retorna todos los usuarios 
         {
             var users = await _context.Usuarios
@@ -154,8 +150,36 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             return  true;
         }
 
+        // metodo para eliminar un usuario en especifico
+
+        public async Task<bool> Delete(string id)
+        {
+            if (String.IsNullOrEmpty(id)) return false;
+
+
+            try {
+
+                var userdelete =  _context.Usuarios.FirstOrDefault(e => e.IdUsuario == id);
+                if (userdelete!=null) {
+
+
+                    _context.Usuarios.Remove(userdelete);
+                    _context.SaveChangesAsync();
+                }
+              
+            
+            }
+
+
+            catch ( Exception ex) { }
+
+
+            return true;
+        }
+
+
         // metodo para verificacion de la contrasenia para cuando va actualizar los datos el usuario
-        
+
 
         //public int  VerificaPassword(Usuario usuario,string password) {
 
