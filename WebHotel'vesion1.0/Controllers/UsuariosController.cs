@@ -4,6 +4,7 @@ using DocumentFormat.OpenXml.Office2019.Drawing.Model3D;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using WebHotel_vesion1._0.Models;
 using WebHotel_vesion1._0.Models.ViewModel;
 using WebHotel_vesion1._0.Repositories.Interfaces;
@@ -45,7 +46,8 @@ namespace WebHotel_vesion1._0.Controllers
         }
 
         // GET: EmpleadosController/Create
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Empleado")]
+     
         public async Task<IActionResult> Create()
         {
             var usuariorol = new UsuarioViewModel {
@@ -190,6 +192,7 @@ namespace WebHotel_vesion1._0.Controllers
         }
 
         // GET: EmpleadosController/Delete/5
+        [Authorize(Roles="Administrador")]
         public async Task<ActionResult> Delete(string  id)
         {
             var user = await _iusuario.getUser(id);
@@ -210,6 +213,28 @@ namespace WebHotel_vesion1._0.Controllers
          
            
             return View();
+        }
+        public async Task<IActionResult> MostrarDatosUsuario(string id) {
+
+            if (String.IsNullOrEmpty(id)) {
+
+                return Content("El id no puede estar vacio");
+            
+            }
+            Usuario usuario = await _iusuario.getUser(id);
+
+            UsuarioViewModel userviewmodel = new UsuarioViewModel
+            {
+
+
+                IdUsuario = usuario.IdUsuario,
+                NombreCompleto = usuario.NombreCompleto,
+                Correo = usuario.Correo,
+                Roles = await _irol.GetRols()
+
+            };
+            return View();
+        
         }
     }
 }

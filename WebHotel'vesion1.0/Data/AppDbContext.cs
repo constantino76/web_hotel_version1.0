@@ -24,8 +24,14 @@ namespace AppLogin.Data
                 tb.Property(col => col.NombreCompleto).HasMaxLength(50);
                 tb.Property(col => col.Correo).HasMaxLength(50);
                 tb.Property(col => col.Clave).HasMaxLength(20000);
+            tb.Property(col => col.FechaRegistro) .HasDefaultValueSql("GETDATE()");
+                tb.Property(col=>col.FechaActualizacion).HasDefaultValueSql("GETDATE()").ValueGeneratedOnAddOrUpdate();
+
+                modelBuilder.Entity<Usuario>().ToTable("tb_Usuarios");
+              
             });
-            modelBuilder.Entity<Usuario>().ToTable("tb_Usuarios");
+         
+           
 
             //configuracion tabla roles
             modelBuilder.Entity<Rol>(tb =>
@@ -34,6 +40,9 @@ namespace AppLogin.Data
                 tb.Property(col => col.IdRol)
                    .ValueGeneratedNever();// no genera campo autoincrementable
                 tb.Property(col => col.Nombre).HasMaxLength(50);
+
+                tb.Property(col => col.FechaRegistro).HasDefaultValueSql("GETDATE()");
+                tb.Property(col => col.FechaActualizacion).HasDefaultValueSql("GETDATE()").ValueGeneratedOnAddOrUpdate();
 
                 modelBuilder.Entity<Rol>().ToTable("tb_Roles");
                 tb.HasData(
@@ -63,6 +72,7 @@ namespace AppLogin.Data
                   .HasForeignKey(ur => ur.IdRol);
 
                 tb.ToTable("UsuarioRol");
+                
             });
             modelBuilder.Entity<Reserva>(tb =>
 
@@ -84,6 +94,17 @@ namespace AppLogin.Data
             }
 
             );
+            modelBuilder.Entity<Habitacion>(tb => {
+                tb.HasKey(h => h.Id);
+                tb.Property(h => h.Id);
+                tb.Property(h => h.Descripcion).HasMaxLength(200).IsRequired();
+                tb.Property(h => h.Numero).IsRequired();
+                tb.Property(h => h.Tipo).HasMaxLength(100).IsRequired();
+                tb.Property(h=>h.EstaDisponible).IsRequired();
+                tb.Property(h => h.PrecioPorNoche).HasColumnType("decimal(18,2)").IsRequired();
+                tb.Property(h => h.imageUrl).HasMaxLength(200).IsRequired();
+                tb.ToTable("tb_Habitaciones");
+            });
 
         }
     }

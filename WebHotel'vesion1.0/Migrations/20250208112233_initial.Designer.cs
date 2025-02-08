@@ -4,6 +4,7 @@ using AppLogin.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebHotel_vesion1._0.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250208112233_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,21 +128,21 @@ namespace WebHotel_vesion1._0.Migrations
                         new
                         {
                             IdRol = 1,
-                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 49, 34, 196, DateTimeKind.Utc).AddTicks(5953),
+                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 22, 29, 958, DateTimeKind.Utc).AddTicks(72),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Administrador"
                         },
                         new
                         {
                             IdRol = 2,
-                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 49, 34, 196, DateTimeKind.Utc).AddTicks(7551),
+                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 22, 29, 958, DateTimeKind.Utc).AddTicks(1780),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Empleado"
                         },
                         new
                         {
                             IdRol = 3,
-                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 49, 34, 196, DateTimeKind.Utc).AddTicks(7556),
+                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 22, 29, 958, DateTimeKind.Utc).AddTicks(1787),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Cliente"
                         });
@@ -178,16 +181,6 @@ namespace WebHotel_vesion1._0.Migrations
                     b.HasKey("IdUsuario");
 
                     b.ToTable("tb_Usuarios", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            IdUsuario = "01-1234-1234",
-                            Clave = "123",
-                            Correo = "admind23@gmail.com",
-                            FechaRegistro = new DateTime(2025, 2, 8, 11, 49, 34, 187, DateTimeKind.Utc).AddTicks(8011),
-                            NombreCompleto = "Juan Camacho"
-                        });
                 });
 
             modelBuilder.Entity("WebHotel_vesion1._0.Models.UsuarioRol", b =>
@@ -203,13 +196,6 @@ namespace WebHotel_vesion1._0.Migrations
                     b.HasIndex("IdRol");
 
                     b.ToTable("UsuarioRol", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            IdUsuario = "01-1234-01234",
-                            IdRol = 1
-                        });
                 });
 
             modelBuilder.Entity("WebHotel_vesion1._0.Models.Reserva", b =>

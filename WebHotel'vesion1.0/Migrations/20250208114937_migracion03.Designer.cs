@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebHotel_vesion1._0.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250125173859_initial")]
-    partial class initial
+    [Migration("20250208114937_migracion03")]
+    partial class migracion03
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,8 @@ namespace WebHotel_vesion1._0.Migrations
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<bool>("EstaDisponible")
                         .HasColumnType("bit");
@@ -49,15 +50,17 @@ namespace WebHotel_vesion1._0.Migrations
 
                     b.Property<string>("Tipo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("imageUrl")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Habitacion");
+                    b.ToTable("tb_Habitaciones", (string)null);
                 });
 
             modelBuilder.Entity("WebHotel_vesion1._0.Models.Reserva", b =>
@@ -102,6 +105,16 @@ namespace WebHotel_vesion1._0.Migrations
                     b.Property<int>("IdRol")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("FechaActualizacion")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -115,16 +128,22 @@ namespace WebHotel_vesion1._0.Migrations
                         new
                         {
                             IdRol = 1,
+                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 49, 34, 196, DateTimeKind.Utc).AddTicks(5953),
+                            FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Administrador"
                         },
                         new
                         {
                             IdRol = 2,
+                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 49, 34, 196, DateTimeKind.Utc).AddTicks(7551),
+                            FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Empleado"
                         },
                         new
                         {
                             IdRol = 3,
+                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 49, 34, 196, DateTimeKind.Utc).AddTicks(7556),
+                            FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Cliente"
                         });
                 });
@@ -144,6 +163,16 @@ namespace WebHotel_vesion1._0.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<DateTime?>("FechaActualizacion")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
                     b.Property<string>("NombreCompleto")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -152,6 +181,16 @@ namespace WebHotel_vesion1._0.Migrations
                     b.HasKey("IdUsuario");
 
                     b.ToTable("tb_Usuarios", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            IdUsuario = "01-1234-1234",
+                            Clave = "123",
+                            Correo = "admind23@gmail.com",
+                            FechaRegistro = new DateTime(2025, 2, 8, 11, 49, 34, 187, DateTimeKind.Utc).AddTicks(8011),
+                            NombreCompleto = "Juan Camacho"
+                        });
                 });
 
             modelBuilder.Entity("WebHotel_vesion1._0.Models.UsuarioRol", b =>
@@ -167,6 +206,13 @@ namespace WebHotel_vesion1._0.Migrations
                     b.HasIndex("IdRol");
 
                     b.ToTable("UsuarioRol", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            IdUsuario = "01-1234-01234",
+                            IdRol = 1
+                        });
                 });
 
             modelBuilder.Entity("WebHotel_vesion1._0.Models.Reserva", b =>

@@ -163,8 +163,8 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
                 if (userdelete!=null) {
 
 
-                    _context.Usuarios.Remove(userdelete);
-                    _context.SaveChangesAsync();
+                   _context.Usuarios.Remove(userdelete);
+                   _context.SaveChanges();
                 }
               
             

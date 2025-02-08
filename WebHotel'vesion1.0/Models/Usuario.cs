@@ -11,6 +11,8 @@ namespace WebHotel_vesion1._0.Models
         public string NombreCompleto { get; set; }
         public string Correo { get; set; }
         public string Clave { get; set; }
+        public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;
+        public DateTime? FechaActualizacion { get; set; }      
         public ICollection<UsuarioRol> UsuarioRoles { get; set; }
     
         public ICollection<Reserva> Reservas { get; set; } // Relación con Reservas

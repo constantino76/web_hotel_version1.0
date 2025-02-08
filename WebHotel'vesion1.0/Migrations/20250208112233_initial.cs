@@ -14,21 +14,21 @@ namespace WebHotel_vesion1._0.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Habitacion",
+                name: "tb_Habitaciones",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Numero = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Tipo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tipo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PrecioPorNoche = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     EstaDisponible = table.Column<bool>(type: "bit", nullable: false),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    imageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Descripcion = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    imageUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Habitacion", x => x.Id);
+                    table.PrimaryKey("PK_tb_Habitaciones", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,7 +36,9 @@ namespace WebHotel_vesion1._0.Migrations
                 columns: table => new
                 {
                     IdRol = table.Column<int>(type: "int", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    FechaActualizacion = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
                 },
                 constraints: table =>
                 {
@@ -50,7 +52,9 @@ namespace WebHotel_vesion1._0.Migrations
                     IdUsuario = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     NombreCompleto = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Correo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Clave = table.Column<string>(type: "nvarchar(max)", maxLength: 20000, nullable: false)
+                    Clave = table.Column<string>(type: "nvarchar(max)", maxLength: 20000, nullable: false),
+                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    FechaActualizacion = table.Column<DateTime>(type: "datetime2", nullable: true, defaultValueSql: "GETDATE()")
                 },
                 constraints: table =>
                 {
@@ -73,9 +77,9 @@ namespace WebHotel_vesion1._0.Migrations
                 {
                     table.PrimaryKey("PK_tb_Reservas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_tb_Reservas_Habitacion_HabitacionId",
+                        name: "FK_tb_Reservas_tb_Habitaciones_HabitacionId",
                         column: x => x.HabitacionId,
-                        principalTable: "Habitacion",
+                        principalTable: "tb_Habitaciones",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -146,7 +150,7 @@ namespace WebHotel_vesion1._0.Migrations
                 name: "UsuarioRol");
 
             migrationBuilder.DropTable(
-                name: "Habitacion");
+                name: "tb_Habitaciones");
 
             migrationBuilder.DropTable(
                 name: "tb_Roles");
