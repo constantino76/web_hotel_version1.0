@@ -214,6 +214,7 @@ namespace WebHotel_vesion1._0.Controllers
            
             return View();
         }
+        [Authorize(Roles ="Administrador,Empleado")]
         public async Task<IActionResult> MostrarDatosUsuario(string id) {
 
             if (String.IsNullOrEmpty(id)) {
@@ -223,17 +224,17 @@ namespace WebHotel_vesion1._0.Controllers
             }
             Usuario usuario = await _iusuario.getUser(id);
 
-            UsuarioViewModel userviewmodel = new UsuarioViewModel
-            {
+            //UsuarioViewModel userviewmodel = new UsuarioViewModel
+            //{
 
 
-                IdUsuario = usuario.IdUsuario,
-                NombreCompleto = usuario.NombreCompleto,
-                Correo = usuario.Correo,
-                Roles = await _irol.GetRols()
+            //    IdUsuario = usuario.IdUsuario,
+            //    NombreCompleto = usuario.NombreCompleto,
+            //    Correo = usuario.Correo,
+            //    Roles = await _irol.GetRols()
 
-            };
-            return View();
+            //};
+            return View(usuario);
         
         }
     }

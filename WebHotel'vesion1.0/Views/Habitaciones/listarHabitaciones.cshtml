@@ -1,0 +1,123 @@
+﻿@model IEnumerable<WebHotel_vesion1._0.Models.Habitacion>
+
+@{
+    ViewData["Title"] = "listarHabitaciones";
+}
+
+<div class="row justify-content-center"style="margin-top:5%">
+    <div class="col-12 col-md-8">
+
+        <p>
+            <a class="btn btn-warning " asp-action="Create">Agregar nuevo registro</a>
+        </p>
+
+
+    </div>
+
+    <div class="col-12 col-md-8">
+
+        <div class="card card-secondary  shadow-lg border-0">
+
+            <h3 class="card-header text-center bg-success">Habitaciones registradas</h3>
+
+
+            <div class="card-body" >
+
+            
+
+
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Numero)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Tipo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PrecioPorNoche)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EstaDisponible)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Descripcion)
+                                </th>
+                                <th>
+                                    Imagen
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Numero)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tipo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PrecioPorNoche)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EstaDisponible)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descripcion)
+                                    </td>
+                                    <td>
+                                        <img src="@Url.Content("~/"+item.imageUrl)" alt="Imagen de la habitación" width="200" height="150" />
+
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                
+
+
+
+            </div>
+
+    </div>
+    
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+                                        <style>
+
+                                            .card{
+                                            
+                                            overflow-y:hidden;
+                                           min-width:100%
+                                            
+                                            } 
+                                            body{background:purple}
+
+                                        </style>

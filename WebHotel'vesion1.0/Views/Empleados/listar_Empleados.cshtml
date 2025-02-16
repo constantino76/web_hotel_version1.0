@@ -3,93 +3,143 @@
 
 
 
+    <div class="container container-fluid mt-3">
+    <div class="row justify-content-center">
+        <div class="col-12 ">
 
-<p class="btn btn-small" id="btn-add">
-    <a asp-action="Create" class="btn btn-small bg-dark"><i class="fa-solid fa-user-plus"></i>Agregar registro</a>
 
-</p>
+    <p class="btn btn-small" id="btn-add">
+        <a asp-action="Create" class="btn btn-small bg-dark"><i class="fa-solid fa-user-plus"></i>Agregar registro</a>
 
-<h1>Listado de Usuarios</h1>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdUsuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreCompleto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Correo)
-            </th>
-            <th>
+    </p>
             
-            Rol
-            </th>
-            <th>Acciones</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
+
+          <div class="card card-primary shadow-lg border-0 w-100" style="overflow:hidden">
+
+                 <div class="card-title bg-dark text-center">
+                     Usuarios Registrados
 
 
-            var list = item.UsuarioRoles.ToList();
-            var cont = 0;
-            <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdUsuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCompleto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Correo)
-            </td>
-            <td> 
-                @* validamos  en caso de que este null lalista de usuario o si hay alguno para iterar  *@
-                    @if (item.UsuarioRoles != null && item.UsuarioRoles.Any())
-                    {
+                 </div>
+<div class="card-body">
+    <div  class="table-responsive">
 
-                        foreach (var rol in item.UsuarioRoles)
-                        {
+                        <table class="table table-striped table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>
+                                       Id
+                                    </th>
+                                    <th>
+                                       Nombre
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Correo)
+                                    </th>
+                                    <th>
 
-                            <strong class="text-blue">@rol.Rol.Nombre;</strong>
-                        
-                        
-                        
-                        }
+                                        Rol
+                                    </th>
+                                    <th>Acciones</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int cont = 0;
+                                }
+                                @foreach (var item in Model)
+                                {
+                                    cont++;
 
-                    
-                    }
+                                  
 
-            </td>
-               
-           
-            <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdUsuario" class="btn btn-small bg-warning"><i class="fa-solid fa-user-pen text-white"></i>Editar</a>
-                    <a asp-action="View" asp-route-id="@item.IdUsuario" class="btn btn-small bg-primary"><i class="fa-regular fa-eye"></i>Ver</a>
+                                    <tr>
+                                        <td>@cont</td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IdUsuario)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NombreCompleto)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Correo)
+                                        </td>
+                                        <td>
+                                            @* validamos  en caso de que este null lalista de usuario o si hay alguno para iterar  *@
+                                            @if (item.UsuarioRoles != null && item.UsuarioRoles.Any())
+                                            {
+
+                                                foreach (var rol in item.UsuarioRoles)
+                                                {
+
+                                                    <strong class="text-blue">@rol.Rol.Nombre;</strong>
+
+
+
+                                                }
+
+
+                                            }
+
+                                        </td>
+
+
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.IdUsuario" class="btn btn-small bg-warning"><i class="fa-solid fa-user-pen text-white"></i>Editar</a>
+                                            <a asp-action="MostrarDatosUsuario" asp-route-id="@item.IdUsuario" class="btn btn-small bg-primary"><i class="fa-regular fa-eye"></i>Ver</a>
+
+                                            <a asp-action="Delete" asp-route-id="@item.IdUsuario" class="btn btn-small bg-danger"><i class="fa-solid fa-trash"></i>Eliminar</a>
+                                        </td>
+                                    </tr>
+
+
+
+
+                                }
+                            </tbody>
+                        </table>
+
+
+    </div>
+
                    
-                    <a asp-action="Delete" asp-route-id="@item.IdUsuario" class="btn btn-small bg-danger"><i class="fa-solid fa-trash"></i>Eliminar</a>
-            </td>
-            </tr>
 
 
-           
+</div>
+             
 
-}
-    </tbody>
-</table>
+                    </div>
+
+
+                </div>
+
+            </div>
+    
+
+
+
+
+    </div>
+
+
+
+
+
 
 
 
 
 <style>
-
-    #btn-add{
+    body{
     
-    margin-top:100px;
+    background-color:purple
+    
+    }
+    #btn-add{
+     
+    margin-top:40px;
     
     
     
@@ -97,4 +147,4 @@
 
 
 
-</style>
+</style> 

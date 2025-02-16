@@ -16,6 +16,6 @@ namespace WebHotel_vesion1._0.Models.ViewModel
 
         public List<Rol> Roles { get; set; }
 
-
+       
     }
 }

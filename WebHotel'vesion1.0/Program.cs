@@ -27,6 +27,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IUsuario, UsuarioRepositorio>();
 builder.Services.AddScoped<IRol,RolRepositorio>();
 builder.Services.AddScoped<IUsuarioRol,UsuarioRolRepositorio>();
+builder.Services.AddScoped<IHabitacion, HabitacionRepositorio>();
 
 var app = builder.Build();
 
