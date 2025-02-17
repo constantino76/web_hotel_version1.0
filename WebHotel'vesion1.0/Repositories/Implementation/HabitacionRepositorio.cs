@@ -1,4 +1,5 @@
 ﻿using AppLogin.Data;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using WebHotel_vesion1._0.Models;
 using WebHotel_vesion1._0.Repositories.Interfaces;
@@ -15,6 +16,8 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             _context = context;
         }
 
+       
+
         public async Task CrearHabitacion(Habitacion habitacion)
         {
             try {
@@ -25,6 +28,60 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
 
             catch { }   
+        }
+        public async Task<bool> ActualizarHabitacion(Habitacion habitacion)
+        {
+            try
+            {
+
+                _context.Habitacion.Add(habitacion);
+                _context.SaveChanges();
+
+
+            }
+
+
+
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error al establecer conexion con el servidor ");
+                return false;
+            }
+            catch (DbUpdateException ex)
+            {
+
+                Console.WriteLine("Error en actualizar la base de datos " + ex.ToString());
+
+
+            }
+
+            return true;
+        }
+        public async  Task<bool> DeleteHabitacion(string id)
+        {
+            try {
+                var habitaciondelete = _context.Habitacion.FirstOrDefault(e => e.Numero == id);
+
+
+                if (habitaciondelete != null) { _context.Remove(habitaciondelete);
+
+                    _context.SaveChanges();
+           
+                
+                }
+             
+
+            }
+            catch (SqlException ex ) { }
+
+
+            return true;
+        }
+
+        public async  Task<Habitacion> getHabitacion(string id)
+        {
+           Habitacion  habitacion = _context.Habitacion.FirstOrDefault(e => e.Numero == id);
+            return   habitacion;
         }
 
         public async Task<List<Habitacion>> ListarHabitaciones()

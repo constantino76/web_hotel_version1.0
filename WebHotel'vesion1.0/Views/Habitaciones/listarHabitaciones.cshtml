@@ -4,7 +4,7 @@
     ViewData["Title"] = "listarHabitaciones";
 }
 
-<div class="row justify-content-center"style="margin-top:5%">
+<div class="row "style="margin-top:5%">
     <div class="col-12 col-md-8">
 
         <p>
@@ -14,20 +14,20 @@
 
     </div>
 
-    <div class="col-12 col-md-8">
+    <div class="col-12">
 
         <div class="card card-secondary  shadow-lg border-0">
 
-            <h3 class="card-header text-center bg-success">Habitaciones registradas</h3>
+            <h3 class="card-header text-center bg-primary">Habitaciones registradas</h3>
 
 
             <div class="card-body" >
 
-            
 
 
 
-                    <table class="table table-striped">
+                 
+                <table class="table table-striped" >
                         <thead>
                             <tr>
                                 <th>
@@ -51,7 +51,7 @@
                                 <th>
                                     Imagen
                                 </th>
-                                <th></th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,14 +77,15 @@
                                         @Html.DisplayFor(modelItem => item.Descripcion)
                                     </td>
                                     <td>
-                                        <img src="@Url.Content("~/"+item.imageUrl)" alt="Imagen de la habitación" width="200" height="150" />
+                                        <img src="@Url.Content("~/"+item.imageUrl)" alt="Imagen de la habitación" width="100" height="150" class="rounded-4" />
 
                                     </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                                    </td>
+                                <td class="pt-4 "style="gap:8px">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-small bg-warning"><i class="fa-solid fa-user-pen text-white"></i>Editar</a>
+                                    <a asp-action="Details" asp-route-id="@item.Numero" class="btn btn-small bg-primary"><i class="fa-regular fa-eye"></i>Ver</a>
+
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-small bg-danger"><i class="fa-solid fa-trash"></i>Borrar</a>
+                                </td>
                                 </tr>
                             }
                         </tbody>

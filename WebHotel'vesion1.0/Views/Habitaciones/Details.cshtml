@@ -1,0 +1,43 @@
+﻿@model WebHotel_vesion1._0.Models.Habitacion
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div class="col-8 mt-4 bg-success">
+
+
+
+
+   <div class="row bg-warning">
+
+
+       <div class="col-12 col-md-8">
+
+           <div class="card card-secondary">
+
+               <div class="card-body">
+
+                   <p>#</p><span></span>
+                   <p>@Model.Id</p>
+
+               </div>
+
+
+           </div>
+
+
+       </div>
+
+   </div>
+</div>
+
+
+
+    <img src="@Url.Content("~/"+Model.imageUrl)" alt="Imagen de la habitación" width="200" height="150" />
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

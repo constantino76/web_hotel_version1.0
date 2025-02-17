@@ -8537,6 +8537,14 @@
       "PackagePath": "staticwebassets\\uploads\\04.jpeg"
     },
     {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\05.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\05.jpeg"
+    },
+    {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\06.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\06.jpeg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebHotelvesion1.0.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

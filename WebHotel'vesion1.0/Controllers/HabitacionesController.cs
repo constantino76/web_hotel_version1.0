@@ -37,9 +37,13 @@ namespace WebHotel_vesion1._0.Controllers
 
         // GET: HabitacionesController/Details/5
         [Authorize(Roles ="Administrador,Empleado")]
-        public ActionResult Details(int id)
+        public  async Task<ActionResult> Details(string id)
         {
-            return View();
+            Habitacion  habitaciondetalles = await  _ihabitacion.getHabitacion(id);
+
+
+            return View(habitaciondetalles);
+
         }
 
         // GET: HabitacionesController/Create
@@ -119,24 +123,61 @@ namespace WebHotel_vesion1._0.Controllers
         }
 
         // GET: HabitacionesController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
+        [Authorize(Roles ="Administrador,Empleado")]
+        public ActionResult Edit(string  id)
+        { var habitacionupdate = _ihabitacion.getHabitacion(id);
+            return View(habitacionupdate);
         }
 
         // POST: HabitacionesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task < ActionResult> Edit(Habitacion habitacion, IFormFile Imagen)
         {
+            IFormFile file = Imagen;
             try
             {
-                return RedirectToAction(nameof(Index));
+
+                var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+                var imagenactual = Path.Combine(uploads, habitacion.imageUrl);
+
+
+
+                if (System.IO.File.Exists(imagenactual)) {
+
+                    System.IO.File.Delete(imagenactual);
+                
+                }
+
+                int cont =Directory.GetFiles("uploads").Length;
+                String filename = $"{cont:D2}.jpeg";
+                var filePath = Path.Combine(uploads, filename);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+
+                Habitacion _habitacion = new Habitacion()
+                {
+
+
+                    Id = habitacion.Id,
+
+                    Numero = habitacion.Numero,
+                    Descripcion = habitacion.Descripcion,
+                    Tipo = habitacion.Tipo,
+                    PrecioPorNoche = habitacion.PrecioPorNoche,
+                    imageUrl = Path.Combine("uploads", filename).Replace("\\", "/")
+                   
+                };
+                _ihabitacion.ActualizarHabitacion(habitacion);
+
             }
             catch
             {
                 return View();
             }
+            return RedirectToAction("listarHabitaciones");
         }
 
         // GET: HabitacionesController/Delete/5
