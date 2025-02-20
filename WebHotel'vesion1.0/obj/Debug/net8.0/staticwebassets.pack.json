@@ -8517,32 +8517,12 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\00.jpeg",
-      "PackagePath": "staticwebassets\\uploads\\00.jpeg"
-    },
-    {
       "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\01.jpeg",
       "PackagePath": "staticwebassets\\uploads\\01.jpeg"
     },
     {
       "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\02.jpeg",
       "PackagePath": "staticwebassets\\uploads\\02.jpeg"
-    },
-    {
-      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\03.jpeg",
-      "PackagePath": "staticwebassets\\uploads\\03.jpeg"
-    },
-    {
-      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\04.jpeg",
-      "PackagePath": "staticwebassets\\uploads\\04.jpeg"
-    },
-    {
-      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\05.jpeg",
-      "PackagePath": "staticwebassets\\uploads\\05.jpeg"
-    },
-    {
-      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\06.jpeg",
-      "PackagePath": "staticwebassets\\uploads\\06.jpeg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebHotelvesion1.0.Microsoft.AspNetCore.StaticWebAssets.props",

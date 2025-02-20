@@ -6,6 +6,7 @@ using WebHotel_vesion1._0.Models;
 using System.IO;
 using WebHotel_vesion1._0.Models.ViewModel;
 using WebHotel_vesion1._0.Repositories.Interfaces;
+using DocumentFormat.OpenXml.Office2010.Excel;
 
 namespace WebHotel_vesion1._0.Controllers
 {
@@ -124,8 +125,8 @@ namespace WebHotel_vesion1._0.Controllers
 
         // GET: HabitacionesController/Edit/5
         [Authorize(Roles ="Administrador,Empleado")]
-        public ActionResult Edit(string  id)
-        { var habitacionupdate = _ihabitacion.getHabitacion(id);
+        public async Task< ActionResult> Edit(string  id)
+        { Habitacion  habitacionupdate = await _ihabitacion.getHabitacion(id);
             return View(habitacionupdate);
         }
 
@@ -134,50 +135,72 @@ namespace WebHotel_vesion1._0.Controllers
         [ValidateAntiForgeryToken]
         public async Task < ActionResult> Edit(Habitacion habitacion, IFormFile Imagen)
         {
-            IFormFile file = Imagen;
+            if (habitacion == null)
+            {
+                return BadRequest("Datos inválidos");
+            }
+
+            var habitacionExistente = await _ihabitacion.getHabitacion(habitacion.Numero);
+
+            if (habitacionExistente == null)
+            {
+                return NotFound("Habitación no encontrada");
+            }
+
             try
             {
+                if (Imagen != null)
+                {
+                    //obtiene la  Ruta completa de la carpeta uploads
+                    var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
 
-                var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
-                var imagenactual = Path.Combine(uploads, habitacion.imageUrl);
+                    // Eliminar imagen anterior si existe
+                    if (!string.IsNullOrEmpty(habitacionExistente.imageUrl))
+                    {
+                        var oldImagePath = Path.Combine(_hostingEnvironment.WebRootPath, habitacionExistente.imageUrl);
 
+                        oldImagePath = oldImagePath.Replace("\\", "/");
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                           System.IO.File.Delete(oldImagePath);
+                            
+                        }
+                    }
+                    int cont = Directory.GetFiles(uploads).Length;
+                    // validamos el conteo para evitar que  sobreescriba el nombre a la nueva imagen  igual a las anteriores 
+                    if(cont>=1) { cont = cont + 1; }
+                    // Generar nuevo nombre de archivo
+                    string filename = $"{cont:D2}.jpeg";
+                    var filePath = Path.Combine(uploads, filename);
 
+                    // Guardar la nueva imagen
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await Imagen.CopyToAsync(fileStream);
+                    }
 
-                if (System.IO.File.Exists(imagenactual)) {
-
-                    System.IO.File.Delete(imagenactual);
-                
+                    // Guardar la nueva ruta relativa en la base de datos
+                    habitacionExistente.imageUrl = Path.Combine("uploads", filename).Replace("\\", "/");
                 }
 
-                int cont =Directory.GetFiles("uploads").Length;
-                String filename = $"{cont:D2}.jpeg";
-                var filePath = Path.Combine(uploads, filename);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(fileStream);
-                }
+                // Actualizar otros datos de la habitación
+               
+                habitacionExistente.Numero = habitacion.Numero;
+                habitacionExistente.Descripcion = habitacion.Descripcion;
+                habitacionExistente.Tipo = habitacion.Tipo;
+                habitacionExistente.PrecioPorNoche = habitacion.PrecioPorNoche;
+                habitacionExistente.EstaDisponible = habitacion.EstaDisponible;
+             
 
-                Habitacion _habitacion = new Habitacion()
-                {
+                await _ihabitacion.ActualizarHabitacion(habitacionExistente);
 
-
-                    Id = habitacion.Id,
-
-                    Numero = habitacion.Numero,
-                    Descripcion = habitacion.Descripcion,
-                    Tipo = habitacion.Tipo,
-                    PrecioPorNoche = habitacion.PrecioPorNoche,
-                    imageUrl = Path.Combine("uploads", filename).Replace("\\", "/")
-                   
-                };
-                _ihabitacion.ActualizarHabitacion(habitacion);
-
+                return RedirectToAction("listarHabitaciones"); // Redirigir al listado de habitaciones
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", "Error al actualizar la habitación: " + ex.Message);
+                return View(habitacion);
             }
-            return RedirectToAction("listarHabitaciones");
         }
 
         // GET: HabitacionesController/Delete/5

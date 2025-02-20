@@ -29,13 +29,14 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
             catch { }   
         }
-        public async Task<bool> ActualizarHabitacion(Habitacion habitacion)
+        public async Task<bool> ActualizarHabitacion(Habitacion habitacionExistente)
         {
             try
             {
 
-                _context.Habitacion.Add(habitacion);
-                _context.SaveChanges();
+                _context.Entry(habitacionExistente).CurrentValues.SetValues(habitacionExistente);
+
+                await _context.SaveChangesAsync(); // 👈 Siempre usa await aquí
 
 
             }

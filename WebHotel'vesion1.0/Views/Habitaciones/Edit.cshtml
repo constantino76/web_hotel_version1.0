@@ -1,23 +1,28 @@
-﻿@model WebHotel_vesion1._0.Models.ViewModel.HabitacionViewModel
+﻿@model WebHotel_vesion1._0.Models.Habitacion
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
+<h1>Edit</h1>
 
-<h4>Habitacion</h4>
-<div class="row  justify-content-center " style="margin-top:8%">
+
+<hr />
+<div class="row justify-content-center mt-4">
     <div class="col-12 col-md-6">
-        <div class="card card-primary shadow-lg border-0 "style="overflow:hidden">
 
-            <h4 class="card-header text-dark text-center">Registro habitaciones</h4>
+        <div class="card card-secondary shadow-lg border-0"style="overflow:hidden">
+            <h3 class="card-header  bg-secondary">Editar </h3>
             <div class="card-body">
 
-                <form asp-action="Create" enctype="multipart/form-data">
+                <form asp-action="Edit" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+                   
+                   
+                   
                     <div class="row">
-                        <div class="col-12">
+
+                        <div class="col-12 ">
 
                             <div class="form-group">
                                 <label asp-for="Numero" class="control-label"></label>
@@ -25,91 +30,96 @@
                                 <span asp-validation-for="Numero" class="text-danger"></span>
                             </div>
 
+
                         </div>
 
-
                     </div>
+
                     <div class="row">
 
                         <div class="col-12">
+
                             <div class="form-group">
                                 <label asp-for="Tipo" class="control-label"></label>
                                 <input asp-for="Tipo" class="form-control" />
                                 <span asp-validation-for="Tipo" class="text-danger"></span>
                             </div>
+
+
                         </div>
 
                     </div>
                     
-                    <div class="row">
 
+                    <div class="row">
                         <div class="col-12">
                             <div class="form-group">
                                 <label asp-for="PrecioPorNoche" class="control-label"></label>
                                 <input asp-for="PrecioPorNoche" class="form-control" />
                                 <span asp-validation-for="PrecioPorNoche" class="text-danger"></span>
                             </div>
-                        </div>
 
                     </div>
+                    </div>
                   
-
+                  
                     <div class="row">
-
                         <div class="col-12">
-
+                           
                             <div class="form-group form-check">
                                 <label class="form-check-label">
                                     <input class="form-check-input" asp-for="EstaDisponible" /> @Html.DisplayNameFor(model => model.EstaDisponible)
                                 </label>
                             </div>
                         </div>
-
                     </div>
-                    
+                 
+
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 col-md-6">
+
+
                             <div class="form-group">
                                 <label asp-for="Descripcion" class="control-label"></label>
                                 <textarea asp-for="Descripcion" class="form-control" rows="4"></textarea>
                                 <span asp-validation-for="Descripcion" class="text-danger"></span>
                             </div>
                         </div>
-                       
-                            <div class="form-group ">
-                                <img id="imagenPrevisualizacion" class="card-image " style="width:200px;height:200px; ">
-                                <input id="Imagen" name="Imagen" type="file" accept="image/*" required="solo imagenes " onchange="CargarImagen(event)" />
-                            </div>
+
+
+                        <div class="col-12 col-md-3">
+
+
+
+                        <div class="form-group ">
+                                <img id="imagenPrevisualizacion" src="@Url.Content("~/"+Model.imageUrl)" class="card-image " style="width:200px;height:200px; "> 
+
+                                @* <img src="@Url.Content("~/"+Model.imageUrl)?v=@DateTime.Now.Ticks" alt="Imagen de la habitación"> *@
+
+                              
+                              <input id="Imagen" name="Imagen" type="file" accept="image/*" required="solo imagenes " onchange="CargarImagen(event)" />
                         </div>
+                    </div>
 
-
+                    </div>
+                  
                     
-
-
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="Save" class="btn btn-primary" />
                     </div>
                 </form>
 
-            </div>
-        </div>
 
+            </div>
+
+        </div>
+        
     </div>
 </div>
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-
-
-
-                            <<style>
-                                 body {
-                                     background-color: darkgrey
-                                 }</style>
-
-
-
 
 <script>
 
