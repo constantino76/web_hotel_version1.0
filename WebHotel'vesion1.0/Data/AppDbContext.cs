@@ -21,9 +21,10 @@ namespace AppLogin.Data
                 tb.HasKey(col => col.IdUsuario);
                 tb.Property(col => col.IdUsuario)
                  .ValueGeneratedNever();// no genera campo autoincrementable
-                tb.Property(col => col.NombreCompleto).HasMaxLength(50);
-                tb.Property(col => col.Correo).HasMaxLength(50);
-                tb.Property(col => col.Clave).HasMaxLength(20000);
+                tb.Property(col => col.NombreCompleto).HasMaxLength(50).IsRequired();
+                tb.Property(col => col.Correo).HasMaxLength(50).IsRequired();
+                tb.Property(col => col.Clave).HasMaxLength(20000).IsRequired();
+                tb.Property(col => col.ImageUrl).IsRequired();
             tb.Property(col => col.FechaRegistro) .HasDefaultValueSql("GETDATE()");
                 tb.Property(col=>col.FechaActualizacion).HasDefaultValueSql("GETDATE()").ValueGeneratedOnAddOrUpdate();
 
@@ -37,9 +38,9 @@ namespace AppLogin.Data
             modelBuilder.Entity<Rol>(tb =>
             {
                 tb.HasKey(col => col.IdRol);
-                tb.Property(col => col.IdRol)
+                tb.Property(col => col.IdRol).IsRequired()
                    .ValueGeneratedNever();// no genera campo autoincrementable
-                tb.Property(col => col.Nombre).HasMaxLength(50);
+                tb.Property(col => col.Nombre).HasMaxLength(50).IsRequired();
 
                 tb.Property(col => col.FechaRegistro).HasDefaultValueSql("GETDATE()");
                 tb.Property(col => col.FechaActualizacion).HasDefaultValueSql("GETDATE()").ValueGeneratedOnAddOrUpdate();

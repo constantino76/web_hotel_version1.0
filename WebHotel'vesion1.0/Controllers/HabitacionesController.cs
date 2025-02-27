@@ -83,7 +83,7 @@ namespace WebHotel_vesion1._0.Controllers
                     }
                     int cont =Directory.GetFiles(uploads).Length;
                     // cambiamos el nombre de la imagen 
-                    String filename= $"{ cont:D2}.jpeg";
+                    String filename= $"{ cont:D2}.jpeg";     
 
 
                     //var filePath = Path.Combine(uploads, file.FileName);
@@ -107,7 +107,7 @@ namespace WebHotel_vesion1._0.Controllers
                         Descripcion = habitacion.Descripcion,
                         Tipo = habitacion.Tipo,
                         PrecioPorNoche = habitacion.PrecioPorNoche,
-                        imageUrl = Path.Combine("uploads", filename).Replace("\\", "/")
+                        imageUrl = Path.Combine("uploads", filename).Replace("\\", "/").Trim()
 
                 };
                    _ihabitacion.CrearHabitacion(_habitacion);   

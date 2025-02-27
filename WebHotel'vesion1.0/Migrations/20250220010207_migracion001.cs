@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebHotel_vesion1._0.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class migracion001 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -54,7 +54,8 @@ namespace WebHotel_vesion1._0.Migrations
                     Correo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Clave = table.Column<string>(type: "nvarchar(max)", maxLength: 20000, nullable: false),
                     FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
-                    FechaActualizacion = table.Column<DateTime>(type: "datetime2", nullable: true, defaultValueSql: "GETDATE()")
+                    FechaActualizacion = table.Column<DateTime>(type: "datetime2", nullable: true, defaultValueSql: "GETDATE()"),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

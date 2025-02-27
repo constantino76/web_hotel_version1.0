@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebHotel_vesion1._0.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250208112233_initial")]
-    partial class initial
+    [Migration("20250220010207_migracion001")]
+    partial class migracion001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -128,21 +128,21 @@ namespace WebHotel_vesion1._0.Migrations
                         new
                         {
                             IdRol = 1,
-                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 22, 29, 958, DateTimeKind.Utc).AddTicks(72),
+                            FechaActualizacion = new DateTime(2025, 2, 20, 1, 2, 4, 942, DateTimeKind.Utc).AddTicks(1797),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Administrador"
                         },
                         new
                         {
                             IdRol = 2,
-                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 22, 29, 958, DateTimeKind.Utc).AddTicks(1780),
+                            FechaActualizacion = new DateTime(2025, 2, 20, 1, 2, 4, 942, DateTimeKind.Utc).AddTicks(3467),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Empleado"
                         },
                         new
                         {
                             IdRol = 3,
-                            FechaActualizacion = new DateTime(2025, 2, 8, 11, 22, 29, 958, DateTimeKind.Utc).AddTicks(1787),
+                            FechaActualizacion = new DateTime(2025, 2, 20, 1, 2, 4, 942, DateTimeKind.Utc).AddTicks(3473),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Cliente"
                         });
@@ -172,6 +172,10 @@ namespace WebHotel_vesion1._0.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NombreCompleto")
                         .IsRequired()

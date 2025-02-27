@@ -22,62 +22,83 @@
 
 
 <hr />
-<div class="row  justify-content-center " style="margin-top:100px">
-    <div class="col-12 col-md-8 ">
+<div class="row  justify-content-center " style="margin-top:50px">
+    <div class="col-12 col-md-6 ">
         
 
-        <div class="card">
-            <div class="card-header bg-dark text-center">
-                <h3 class="card-text text-success text-center">Edicion </h3>
-                <span class="bg-green" ><i class="fa-solid fa-file-pen"></i></span>
+        <div class="card card-primary shadow-lg  border-0">
+            <div class="card-header  text-center">
+                <h3 class="card-text text-white text-center">Edicion </h3>
+                <span class="bg-black" ><i class="fa-solid fa-file-pen"></i></span>
             </div>
-            <div class="card-body bg-dark">
+            <div class="card-body">
 
                
 
-                <form asp-action="Edit">
+                <form asp-action="Edit" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="IdUsuario" class="control-label"></label>
-                      
 
+
+                    <div class="row">
+                        <div class="col-12"></div>
+                        <div class="form-group">
                           
-                               
-                                <input asp-for="IdUsuario" class="form-control" readonly />
-                                <span asp-validation-for="IdUsuario" class="text-danger"></span>
-                         
 
-                    
-                      
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="NombreCompleto" class="control-label"></label>
-                       
-                        <div class="input-group bg-white">
 
-                            <div class="input-group-prepend w-100">
-                            <span ><i class="fa-solid fa-user"></i></span>
-                            <input asp-for="NombreCompleto" class="form-control" />
-                            <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+
+
+                            <input asp-for="IdUsuario" class="form-control" hidden />
+                            <span asp-validation-for="IdUsuario" class="text-danger"></span>
+
+
+
+
                         </div>
-                       
-                    </div>
-            </div>
 
-                       
+                    </div>
+                  
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label asp-for="NombreCompleto" class="control-label"></label>
+
+                                <div class="input-group bg-white">
+
+                                    <div class="input-group-prepend w-100">
+                                        <span><i class="fa-solid fa-user"></i></span>
+                                        <input asp-for="NombreCompleto" class="form-control" />
+                                        <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+              
+                    <div class="row">
+                        <div class="col-12">
+
                             <div class="form-group">
                                 <label asp-for="Correo" class="control-label"></label>
                                 <div class="input-group bg-white">
-                            <div class="input-group-prepend w-100">
-                                <span class="bg-white"><i class="fa-solid fa-envelope "></i></span>
-                                <input asp-for="Correo" class="form-control"  />
-                                <span asp-validation-for="Correo" class="text-danger"></span>
+                                    <div class="input-group-prepend w-100">
+                                        <span><i class="fa-solid fa-envelope "></i></span>
+                                        <input asp-for="Correo" class="form-control" />
+                                        <span asp-validation-for="Correo" class="text-danger"></span>
 
-                            </div>
+                                    </div>
 
                                 </div>
-                              
+
                             </div>
+
+
+                        </div>
+                    </div>
+                       
+                        
 
 
                     <div class="row">
@@ -103,6 +124,7 @@
                             <div class="form-group">
 
                                 <label for="IdRol"> Rol</label>
+                                <span></span>
                                 <select name="IdRol" class="form-control bg-primary text-dark">
                                     @foreach (var rol in Model.Roles)
                                     {
@@ -124,6 +146,23 @@
 
 
                     </div>
+
+
+                   <div class="row">
+
+                       <div class="col-md-4">
+                           <label>Foto</label>
+                            <div class="form-group ">
+                                <img id="imagenPrevisualizacion" src="@Url.Content("~/"+Model.imageUrl)" class="card-image " style="width:200px;height:200px; ">
+                                <input id="Imagen" name="Imagen" type="file" accept="image/*" required="solo imagenes " onchange="CargarImagen(event)" />
+                            </div>
+
+
+
+                       </div>
+
+
+                   </div>
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-4" style="margin-bottom:2px">
                             <a asp-action="listar_Empleados" class="btn   bg-warning btn-outline">Atras</a>
@@ -147,12 +186,43 @@
         </div>
       
     </div>
+
+
+
 </div>
-                          <style>
+
+
+
+<script>
+
+
+    var CargarImagen = function (event) {
+
+        var result = document.getElementById("imagenPrevisualizacion");
+        result.src = URL.createObjectURL(event.target.files[0]);
+
+    }
+
+</script>
+<style>
+
+
+
+    .input-group{
+    border:2px solid whiteSmoke;
+     border-radius:12px;
+    
+    }
                  #NombreCompleto , #Correo, #Clave {
         border: none !important
          }
-                              body{background-color: black}
+
+
+    .input-group {
+        color: crimson !important;
+        /* margin-left:4px !important; */
+        /* width:99% */
+    }
 
 
                           </style>

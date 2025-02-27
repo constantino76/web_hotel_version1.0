@@ -58,16 +58,16 @@
 
 
 <hr />
-<div class="container">
+
 
         <div class="row justify-content-center" style="margin-top:100px">
-            <div class="col-12 col-md-8"style="margin-left:12%">
+            <div class="col-12 col-md-6">
                 <div class="card card-primary shadow-lg border-0">
                     <h4 class="text-center bg-primary">Modulo de registro de Usuarios</h4>
                     <div class="card-body">
 
 
-                        <form asp-controller="Empleados" asp-action="Create" method="post" id="formulario_registro">
+                        <form asp-controller="Empleados" asp-action="Create" method="post" id="formulario_registro" class="bg-white" enctype="multipart/form-data">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 
@@ -133,12 +133,12 @@
                                 </div>
                             </div>
 
-                            <div class="row ">
-                                <div class="col-7 ">
+                            <div class="row">
+                                <div class="col-8 ">
                                     <div class="form-group">
                                         <label asp-for="Clave" class="control-label"></label>
                                         <div class="input-group bg-white">
-                                            <div class="input-group-prepend">
+                                            <div class="input-group-prepend w-100">
                                             <span><i class="fa-solid fa-key"></i></span>
                                             <input asp-for="Clave" class="form-control" required placeholder="Clave" />
                                             <span asp-validation-for="Clave" class="text-danger"></span>
@@ -148,7 +148,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div class="form-group">
                                         <label for="IdRol" class="control-label">Rol</label>
                                         <select name="IdRol" class="form-control bg-light text-dark" required>
@@ -160,6 +160,21 @@
                                     </div>
                                 </div>
                             </div>
+                          <div class="row">
+                             <div class="col-12 col-md-8">
+
+                                <div class="form-group ">
+                                    <img id="imagenPrevisualizacion" class="card-image" style="width:200px;height:200px; ">
+                                    <input id="Imagen" name="Imagen" type="file" accept="image/*" required="solo imagenes " onchange="CargarImagen(event)" />
+                                </div>
+                            </div>
+
+
+
+                             
+
+
+                          </div>
 
 
 
@@ -199,7 +214,7 @@
 
 
 
-            </div>
+            
    
         
         
@@ -218,6 +233,20 @@
 
 
 </html>
+
+
+
+<script>
+
+
+    var CargarImagen = function (event) {
+
+        var result = document.getElementById("imagenPrevisualizacion");
+        result.src = URL.createObjectURL(event.target.files[0]);
+
+    }
+
+</script>
 <style>
 
     #IdUsuario, #NombreCompleto, #Correo ,#Clave, #IdRol {
@@ -233,9 +262,10 @@
 
        }
        .input-group-prepend{
-          
+           padding-top:3px;
+          overflow:hidden;
          padding-left:2%;
-       border :2px#FFAA !important;
+       border :2px solid whiteSmoke !important;
        border-radius:12px 
        
        }
@@ -248,7 +278,7 @@
    
     label{
     
-    color:black
+    color:black;
     
     }
 
@@ -256,8 +286,8 @@
 
     .input-group{ 
         color:crimson !important;
-    margin-left:4px !important;
+    /* margin-left:4px !important; */
   
-    width:99%
+    /* width:99% */
     }
 </style>

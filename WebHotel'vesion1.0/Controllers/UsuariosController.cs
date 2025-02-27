@@ -15,12 +15,13 @@ namespace WebHotel_vesion1._0.Controllers
    
     public class EmpleadosController : Controller
     {
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IUsuario _iusuario;
         private readonly IRol _irol;
         private readonly IUsuarioRol _usuarioRol;    
-        public EmpleadosController(IUsuario isuario,IRol irol, IUsuarioRol usuarioRol) {
+        public EmpleadosController(IWebHostEnvironment hostingEnvironment, IUsuario isuario,IRol irol, IUsuarioRol usuarioRol) {
 
-
+            _hostingEnvironment = hostingEnvironment;
             _iusuario = isuario;
             _irol = irol;
             _usuarioRol = usuarioRol;
@@ -68,26 +69,52 @@ namespace WebHotel_vesion1._0.Controllers
         // POST: EmpleadosController/Create
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(UsuarioViewModel user)
+        public async Task<IActionResult> Create(UsuarioViewModel user,IFormFile Imagen)
         {
-       //     Success = 1,
-       // DuplicateEmailOrPassword = 2,
-       //ErrorConexionString = 3,
-       // UpdateError = 4,
-       // DeleteSuccess = 5,
-       // DeleteError = 6
+            Usuario usuario =null;
+            IFormFile file = null;
+            //     Success = 1,
+            // DuplicateEmailOrPassword = 2,
+            //ErrorConexionString = 3,
+            // UpdateError = 4,
+            // DeleteSuccess = 5,
+            // DeleteError = 6
 
             // initialize properties
 
+            if (user!=null && Imagen != null) {
+                file = Imagen;
 
-            Usuario usuario = new Usuario {
+                var profile = Path.Combine(_hostingEnvironment.WebRootPath, "profile");
 
-                IdUsuario = user.IdUsuario,
-                NombreCompleto = user.NombreCompleto,
-                Correo = user.Correo,
-                Clave = user.Clave,
+                if (!Directory.Exists(profile)) {
+                
+                Directory.CreateDirectory(profile); 
+                
+                }
+                //obtenemos el numero de archivos en el directorio 
+                int cont=Directory.GetFiles(profile).Length;
+                string filename = $"{cont:D2}.jpeg";// asignamos el nombre
+                var filepath = Path.Combine(profile, filename);//ruta donde se guardara la foto
 
-            };
+                using (var  filestream= new FileStream(filepath,FileMode.Create)) {
+                await Imagen.CopyToAsync(filestream);   
+                
+                }
+
+
+
+               usuario  = new Usuario
+                {
+
+                    IdUsuario = user.IdUsuario,
+                    NombreCompleto = user.NombreCompleto,
+                    Correo = user.Correo,
+                    Clave = user.Clave,
+                    ImageUrl = Path.Combine("profile", filename).Replace("\\", "/")
+
+               };
+            }
 
             var status= _iusuario.Create(usuario);
             int valor = (int) await status;
@@ -130,6 +157,7 @@ namespace WebHotel_vesion1._0.Controllers
                 NombreCompleto = user.NombreCompleto, 
                 Correo = user.Correo, 
                 Clave=user.Clave,
+                imageUrl=user.ImageUrl,
                 Roles = await _irol.GetRols()
 
             };
@@ -139,8 +167,12 @@ namespace WebHotel_vesion1._0.Controllers
         // POST: EmpleadosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  async Task<IActionResult> Edit( UsuarioViewModel userviewmodel)
+        public  async Task<IActionResult> Edit( UsuarioViewModel userviewmodel, IFormFile Imagen)
         {
+
+            if (Imagen == null) {
+                return Content("Se debe    seleccionar una imagen ");
+            }
              
             if (userviewmodel == null) {
 
@@ -149,8 +181,47 @@ namespace WebHotel_vesion1._0.Controllers
 
             }
 
+           Usuario olduser = await _iusuario.getUser(userviewmodel.IdUsuario);
+            if (olduser == null) {
+
+                return Content("No se encontro el registro en el sistema");
+            
+            }
+
             try
-            { //  carga de las propiedades con los datos del modelo 
+            {  // obtenemos la ruta de la carpeta profile
+                var profile = Path.Combine(_hostingEnvironment.WebRootPath, "profile");
+                // obtenemos la ruta de la vieja imagen 
+                var oldImagePath = Path.Combine(_hostingEnvironment.WebRootPath, olduser.ImageUrl);
+
+                if (System.IO.File.Exists(oldImagePath)) { 
+                
+                System.IO.File.Delete(oldImagePath); 
+                }
+
+                oldImagePath = oldImagePath.Replace("\\", "/");
+
+                int cont =Directory.GetFiles(profile).Length; 
+                
+                if (cont >=1) {
+                    cont = cont += 1; 
+                
+                
+                }
+                //asignamos el nombre al nuevo archivo
+                string filename = $"{cont:D2}.jpeg";
+
+                var filePath = Path.Combine(profile, filename);
+
+                // Guardar la nueva imagen
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await Imagen.CopyToAsync(fileStream);
+                }
+
+
+              olduser.ImageUrl=  Path.Combine("profile", filename).Replace("\\", "/");
+                //  carga de las propiedades con los datos del modelo 
                 Usuario user = new Usuario
                 {
 
@@ -158,7 +229,7 @@ namespace WebHotel_vesion1._0.Controllers
                     NombreCompleto = userviewmodel.NombreCompleto,
                     Correo = userviewmodel.Correo,
                     Clave = userviewmodel.Clave,
-
+                    ImageUrl = olduser.ImageUrl
 
                 };
                 //llamada para el metodo de actualizar usuario
@@ -188,7 +259,7 @@ namespace WebHotel_vesion1._0.Controllers
             
             
             };
-            return View(roles);
+            return RedirectToAction("listar_Empleados");
         }
 
         // GET: EmpleadosController/Delete/5
