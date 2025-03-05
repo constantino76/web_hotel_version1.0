@@ -8517,16 +8517,28 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\00.jpeg",
-      "PackagePath": "staticwebassets\\profile\\00.jpeg"
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\02.jpeg",
+      "PackagePath": "staticwebassets\\profile\\02.jpeg"
     },
     {
-      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\00.jpeg",
-      "PackagePath": "staticwebassets\\uploads\\00.jpeg"
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\171afd25-40c0-4895-b060-29232a045c47.jpg",
+      "PackagePath": "staticwebassets\\profile\\171afd25-40c0-4895-b060-29232a045c47.jpg"
+    },
+    {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\e665c871-6a7c-4e51-ae5f-dcc792e75113.jpg",
+      "PackagePath": "staticwebassets\\profile\\e665c871-6a7c-4e51-ae5f-dcc792e75113.jpg"
     },
     {
       "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\01.jpeg",
       "PackagePath": "staticwebassets\\uploads\\01.jpeg"
+    },
+    {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\02.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\02.jpeg"
+    },
+    {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\95c6828e-58a2-4a79-a42f-808a4f635538.PNG",
+      "PackagePath": "staticwebassets\\uploads\\95c6828e-58a2-4a79-a42f-808a4f635538.PNG"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebHotelvesion1.0.Microsoft.AspNetCore.StaticWebAssets.props",

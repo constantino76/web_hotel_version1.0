@@ -13,13 +13,13 @@ namespace WebHotel_vesion1._0.Controllers
 {
     [Authorize]
    
-    public class EmpleadosController : Controller
+    public class UsuariosController : Controller
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IUsuario _iusuario;
         private readonly IRol _irol;
         private readonly IUsuarioRol _usuarioRol;    
-        public EmpleadosController(IWebHostEnvironment hostingEnvironment, IUsuario isuario,IRol irol, IUsuarioRol usuarioRol) {
+        public UsuariosController(IWebHostEnvironment hostingEnvironment, IUsuario isuario,IRol irol, IUsuarioRol usuarioRol) {
 
             _hostingEnvironment = hostingEnvironment;
             _iusuario = isuario;
@@ -27,7 +27,7 @@ namespace WebHotel_vesion1._0.Controllers
             _usuarioRol = usuarioRol;
         }
 
-
+        //C:\CursosWeb\WebHotel'vesion1.0\WebHotel'vesion1.0\Views\Usuarios\
         // GET: EmpleadosController
         [Authorize(Roles ="Administrador ,Empleado")]
         public async Task<ActionResult> listar_Empleados() {
@@ -189,10 +189,14 @@ namespace WebHotel_vesion1._0.Controllers
             }
 
             try
-            {  // obtenemos la ruta de la carpeta profile
-                var profile = Path.Combine(_hostingEnvironment.WebRootPath, "profile");
-                // obtenemos la ruta de la vieja imagen 
-                var oldImagePath = Path.Combine(_hostingEnvironment.WebRootPath, olduser.ImageUrl);
+            {
+                string fileExtension = Path.GetExtension(Imagen.FileName);//obtenemos el nombre de la imagen 
+                string newFileName = Guid.NewGuid().ToString() + fileExtension;// creamos un nombre unico 
+
+              
+                var profile = Path.Combine(_hostingEnvironment.WebRootPath, "profile");  // obtenemos la ruta de la carpeta profile
+              
+                var oldImagePath = Path.Combine(_hostingEnvironment.WebRootPath, olduser.ImageUrl);  // obtenemos la ruta de la vieja imagen 
 
                 if (System.IO.File.Exists(oldImagePath)) { 
                 
@@ -202,16 +206,11 @@ namespace WebHotel_vesion1._0.Controllers
                 oldImagePath = oldImagePath.Replace("\\", "/");
 
                 int cont =Directory.GetFiles(profile).Length; 
-                
-                if (cont >=1) {
-                    cont = cont += 1; 
-                
-                
-                }
+              
                 //asignamos el nombre al nuevo archivo
-                string filename = $"{cont:D2}.jpeg";
+              
 
-                var filePath = Path.Combine(profile, filename);
+                var filePath = Path.Combine(profile, newFileName);
 
                 // Guardar la nueva imagen
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -220,7 +219,7 @@ namespace WebHotel_vesion1._0.Controllers
                 }
 
 
-              olduser.ImageUrl=  Path.Combine("profile", filename).Replace("\\", "/");
+              olduser.ImageUrl=  Path.Combine("profile", newFileName).Replace("\\", "/");
                 //  carga de las propiedades con los datos del modelo 
                 Usuario user = new Usuario
                 {

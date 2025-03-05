@@ -135,9 +135,11 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
             try
             {
-               
 
-                _context.Update(usuario);
+
+                _context.Entry(usuario).CurrentValues.SetValues(usuario);
+
+                await _context.SaveChangesAsync();
                 _context.SaveChanges();
             }
 

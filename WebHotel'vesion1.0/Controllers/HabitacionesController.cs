@@ -151,11 +151,14 @@ namespace WebHotel_vesion1._0.Controllers
             {
                 if (Imagen != null)
                 {
-                    //obtiene la  Ruta completa de la carpeta uploads
-                    var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+                    string FileNameExtension = Path.GetExtension(Imagen.FileName);// obtenemos la extension del archivo
 
-                    // Eliminar imagen anterior si existe
-                    if (!string.IsNullOrEmpty(habitacionExistente.imageUrl))
+                    string NewImageName = Guid.NewGuid().ToString() + FileNameExtension;//creamos un nuevo nombre 
+                  
+                    var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");  //obtiene la  Ruta completa de la carpeta uploads
+
+                
+                    if (!string.IsNullOrEmpty(habitacionExistente.imageUrl))    // Eliminar imagen anterior si existe
                     {
                         var oldImagePath = Path.Combine(_hostingEnvironment.WebRootPath, habitacionExistente.imageUrl);
 
@@ -166,12 +169,9 @@ namespace WebHotel_vesion1._0.Controllers
                             
                         }
                     }
-                    int cont = Directory.GetFiles(uploads).Length;
-                    // validamos el conteo para evitar que  sobreescriba el nombre a la nueva imagen  igual a las anteriores 
-                    if(cont>=1) { cont = cont + 1; }
-                    // Generar nuevo nombre de archivo
-                    string filename = $"{cont:D2}.jpeg";
-                    var filePath = Path.Combine(uploads, filename);
+                   
+                  
+                    var filePath = Path.Combine(uploads, NewImageName);
 
                     // Guardar la nueva imagen
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -180,7 +180,7 @@ namespace WebHotel_vesion1._0.Controllers
                     }
 
                     // Guardar la nueva ruta relativa en la base de datos
-                    habitacionExistente.imageUrl = Path.Combine("uploads", filename).Replace("\\", "/");
+                    habitacionExistente.imageUrl = Path.Combine("uploads", NewImageName).Replace("\\", "/");
                 }
 
                 // Actualizar otros datos de la habitación
