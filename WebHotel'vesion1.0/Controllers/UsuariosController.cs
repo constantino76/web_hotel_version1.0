@@ -224,7 +224,7 @@ namespace WebHotel_vesion1._0.Controllers
                 Usuario user = new Usuario
                 {
 
-                   // IdUsuario = userviewmodel.IdUsuario,
+                  IdUsuario = userviewmodel.IdUsuario,
                     NombreCompleto = userviewmodel.NombreCompleto,
                     Correo = userviewmodel.Correo,
                     Clave = userviewmodel.Clave,
@@ -274,7 +274,28 @@ namespace WebHotel_vesion1._0.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteUser(string IdUsuario)
         {
-           
+           Usuario usuarioExistente = await _iusuario.getUser(IdUsuario);
+            if (usuarioExistente != null)
+            {
+
+
+                var profile = Path.Combine(_hostingEnvironment.WebRootPath, "profile");  // obtenemos la ruta de la carpeta profile
+
+                var oldImagePath = Path.Combine(_hostingEnvironment.WebRootPath, usuarioExistente.ImageUrl);  // obtenemos la ruta de la vieja imagen 
+
+                if (System.IO.File.Exists(oldImagePath))
+                {
+
+                    System.IO.File.Delete(oldImagePath);
+                }
+
+
+            }
+            else {
+
+                return Content("<h3 class='bg-danger' > No se pudo elimar el usuario</h3>");
+            
+            }
 
               bool result =await   _iusuario.Delete(IdUsuario);
 

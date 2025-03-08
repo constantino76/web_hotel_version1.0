@@ -135,9 +135,13 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
             try
             {
+                var usuarioExistente = await _context.Usuarios.FindAsync(usuario.IdUsuario);
+                if (usuarioExistente == null)
+                {
+                    return false; // Si no existe, no se puede actualizar
+                }
 
-
-                _context.Entry(usuario).CurrentValues.SetValues(usuario);
+                _context.Entry(usuarioExistente).CurrentValues.SetValues(usuario);
 
                await  _context.SaveChangesAsync();
 
