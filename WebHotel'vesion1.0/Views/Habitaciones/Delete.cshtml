@@ -31,20 +31,23 @@
             <div class="row ">
                 <div class="col-12">
 
-                        <label for="PrecioPorNoche "></label>
+                        <label for="PrecioPorNoche ">Precio por noche</label>
                         <p>@Model.PrecioPorNoche</p>
 
 
                 </div>
             </div>
+
+
+                <form asp-action="DeleteHabitacion">
+
+                    <input asp-for="Numero"hidden />
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    <a asp-action="Index">Back to List</a>
+                </form>
         </div>
 
     </div>
 </div>
-    <form asp-action="DeleteHabitacion">
-
-        <input    asp-for="Id" hidden/>
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+   
 </div>

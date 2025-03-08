@@ -61,8 +61,8 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
         public async  Task<bool> DeleteHabitacion(string id)
         {
             try {
-                int id_ = Convert.ToInt32(id);
-                var habitaciondelete = _context.Habitacion.FirstOrDefault(e => e.Id == id_);
+               
+                var habitaciondelete = _context.Habitacion.FirstOrDefault(e => e.Numero== id);
 
 
                 if (habitaciondelete != null) { 

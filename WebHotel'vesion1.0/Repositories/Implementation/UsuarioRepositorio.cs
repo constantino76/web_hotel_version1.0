@@ -139,8 +139,13 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
                 _context.Entry(usuario).CurrentValues.SetValues(usuario);
 
-                await _context.SaveChangesAsync();
-                _context.SaveChanges();
+               await  _context.SaveChangesAsync();
+
+                //_context.Entry(habitacionExistente).CurrentValues.SetValues(habitacionExistente);
+
+                //await _context.SaveChangesAsync()
+
+
             }
 
             catch (DbUpdateException ex ) {

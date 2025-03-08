@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "x1iiLHxDbfvIyA6uNcw8jl4q9CrG2sa0x3sdhKrn91I=",
+  "Hash": "IqTWMFAI+G7Bl9RFtSPIl/Ur20ppynCJEYWHxepzs8U=",
   "Source": "WebHotelvesion1.0",
   "BasePath": "_content/WebHotelvesion1.0",
   "Mode": "Default",
@@ -40525,12 +40525,12 @@
       "OriginalItemSpec": "wwwroot\\profile\\03.jpeg"
     },
     {
-      "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\171afd25-40c0-4895-b060-29232a045c47.jpg",
+      "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\77c0cab1-723f-400b-af48-ed246f8e4d5e.jpg",
       "SourceId": "WebHotelvesion1.0",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\",
       "BasePath": "_content/WebHotelvesion1.0",
-      "RelativePath": "profile/171afd25-40c0-4895-b060-29232a045c47.jpg",
+      "RelativePath": "profile/77c0cab1-723f-400b-af48-ed246f8e4d5e.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -40541,7 +40541,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\profile\\171afd25-40c0-4895-b060-29232a045c47.jpg"
+      "OriginalItemSpec": "wwwroot\\profile\\77c0cab1-723f-400b-af48-ed246f8e4d5e.jpg"
     },
     {
       "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\e665c871-6a7c-4e51-ae5f-dcc792e75113.jpg",
@@ -40561,25 +40561,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\profile\\e665c871-6a7c-4e51-ae5f-dcc792e75113.jpg"
-    },
-    {
-      "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\01.jpeg",
-      "SourceId": "WebHotelvesion1.0",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\",
-      "BasePath": "_content/WebHotelvesion1.0",
-      "RelativePath": "uploads/01.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\01.jpeg"
     },
     {
       "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\02.jpeg",
@@ -40656,6 +40637,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\05.jpeg"
+    },
+    {
+      "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\2df47438-a6e2-46ef-abc4-9720e7c3e6cf.PNG",
+      "SourceId": "WebHotelvesion1.0",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\",
+      "BasePath": "_content/WebHotelvesion1.0",
+      "RelativePath": "uploads/2df47438-a6e2-46ef-abc4-9720e7c3e6cf.PNG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\2df47438-a6e2-46ef-abc4-9720e7c3e6cf.PNG"
     },
     {
       "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\95c6828e-58a2-4a79-a42f-808a4f635538.PNG",

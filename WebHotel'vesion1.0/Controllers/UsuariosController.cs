@@ -224,7 +224,7 @@ namespace WebHotel_vesion1._0.Controllers
                 Usuario user = new Usuario
                 {
 
-                    IdUsuario = userviewmodel.IdUsuario,
+                   // IdUsuario = userviewmodel.IdUsuario,
                     NombreCompleto = userviewmodel.NombreCompleto,
                     Correo = userviewmodel.Correo,
                     Clave = userviewmodel.Clave,

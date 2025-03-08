@@ -216,11 +216,11 @@ namespace WebHotel_vesion1._0.Controllers
         // POST: HabitacionesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteHabitacion(string  Id)
+        public ActionResult DeleteHabitacion(string  Numero)
         {
             try
             {
-                _ihabitacion.DeleteHabitacion(Id);
+                _ihabitacion.DeleteHabitacion(Numero);
                 return RedirectToAction(nameof(listarHabitaciones));
             }
             catch
