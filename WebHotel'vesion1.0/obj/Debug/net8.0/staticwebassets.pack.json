@@ -8521,6 +8521,10 @@
       "PackagePath": "staticwebassets\\profile\\02.jpeg"
     },
     {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\03.jpeg",
+      "PackagePath": "staticwebassets\\profile\\03.jpeg"
+    },
+    {
       "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\171afd25-40c0-4895-b060-29232a045c47.jpg",
       "PackagePath": "staticwebassets\\profile\\171afd25-40c0-4895-b060-29232a045c47.jpg"
     },
@@ -8535,6 +8539,18 @@
     {
       "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\02.jpeg",
       "PackagePath": "staticwebassets\\uploads\\02.jpeg"
+    },
+    {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\03.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\03.jpeg"
+    },
+    {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\04.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\04.jpeg"
+    },
+    {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\05.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\05.jpeg"
     },
     {
       "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\95c6828e-58a2-4a79-a42f-808a4f635538.PNG",

@@ -65,7 +65,7 @@ namespace WebHotel_vesion1._0.Controllers
                 //if rol is Administrador rediect to  action ModuloMaestro
                if (Rol.Equals("Administrador")||Rol.Equals("Empleado")) {
 
-                 return RedirectToAction("ModuloMaestro", "Home");
+                 return RedirectToAction("Dasboard", "Home");
                 
                 
                 }

@@ -58,7 +58,7 @@ namespace WebHotel_vesion1._0.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public  async Task<ActionResult> Create(HabitacionViewModel habitacion,IFormFile Imagen)
-        {
+           {
             IFormFile file =null;
 
             try 
@@ -205,19 +205,23 @@ namespace WebHotel_vesion1._0.Controllers
 
         // GET: HabitacionesController/Delete/5
         [Authorize(Roles ="Administrador")]
-        public ActionResult Delete(int id)
+        public async Task<IActionResult>  Delete(string  id)
         {
-            return View();
+            Habitacion habitacion= new Habitacion();
+            habitacion= await _ihabitacion.getHabitacion(id);
+            
+            return View(habitacion);
         }
 
         // POST: HabitacionesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteHabitacion(string  Id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                _ihabitacion.DeleteHabitacion(Id);
+                return RedirectToAction(nameof(listarHabitaciones));
             }
             catch
             {
