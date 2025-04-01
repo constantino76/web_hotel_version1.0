@@ -26,7 +26,7 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             return roles;
         }
 
-        public Task<bool> UpdateRol(Rol rol)
+        public Task<bool> UpdateRol(Rol rol)  
         {
             throw new NotImplementedException();
         }
