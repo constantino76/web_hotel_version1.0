@@ -30,19 +30,9 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
         public async Task<bool> UpdateUserRol(UsuarioRol usuariorol) {
 
-            // var listroles = _context.UsuarioRols.Where(e => e.IdUsuario == usuariorol.IdUsuario);
+            
 
-            // if (listroles.Any()) {
-
-            //     _context.UsuarioRols.RemoveRange(listroles);
-
-            // }
-            //await  _context.UsuarioRols.AddAsync(usuariorol);
-            // _context.SaveChangesAsync();
-
-
-            //lo mismo pero mas eficiente
-
+            
             _context.UsuarioRols.RemoveRange(_context.UsuarioRols.Where(e => e.IdUsuario == usuariorol.IdUsuario));
 
 

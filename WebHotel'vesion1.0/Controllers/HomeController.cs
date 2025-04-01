@@ -31,6 +31,12 @@ namespace WebHotel_vesion1._0.Controllers
 
         [Authorize(Roles = "Administrador,Empleado")]
         public async Task<ActionResult> Dasboard() {
+            List<Usuario> listusuarios =await  _iusuario.getAll();
+            List<Habitacion> listhabitaciones = await _habitacion.ListarHabitaciones();
+
+            totalUsuarios_ = listusuarios.Count;
+            habitacionesDisponibles_ = listhabitaciones.Count(h => h.EstaDisponible == true);
+            habitacionesOcupadas_ = listhabitaciones.Count(h => h.EstaDisponible == false);
             ViewBag.totalUsuarios = totalUsuarios_;
             ViewBag.habitacionesOcupadas = habitacionesOcupadas_;
             ViewBag.habitacionesDisponibles = habitacionesDisponibles_;
@@ -53,9 +59,9 @@ namespace WebHotel_vesion1._0.Controllers
             var habitacionesDisponibles = listhabitaciones.Count(h => h.EstaDisponible == true);
             var habitacionesOcupadas = listhabitaciones.Count(h => h.EstaDisponible == false);
             //*********************************************************************************
-              totalUsuarios_ = listusuarios.Count;
-             habitacionesDisponibles_= listhabitaciones.Count(h => h.EstaDisponible == true);
-            habitacionesOcupadas_  = listhabitaciones.Count(h => h.EstaDisponible == false);
+            //  totalUsuarios_ = listusuarios.Count;
+            // habitacionesDisponibles_= listhabitaciones.Count(h => h.EstaDisponible == true);
+            //habitacionesOcupadas_  = listhabitaciones.Count(h => h.EstaDisponible == false);
             //*********************************************************************************
           
 

@@ -221,6 +221,8 @@ namespace WebHotel_vesion1._0.Controllers
             try
             {
                 _ihabitacion.DeleteHabitacion(Numero);
+
+
                 return RedirectToAction(nameof(listarHabitaciones));
             }
             catch
