@@ -8517,6 +8517,14 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\01.jpeg",
+      "PackagePath": "staticwebassets\\profile\\01.jpeg"
+    },
+    {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\f0d57b41-510d-432c-b777-3c458c2857de.jpg",
+      "PackagePath": "staticwebassets\\profile\\f0d57b41-510d-432c-b777-3c458c2857de.jpg"
+    },
+    {
       "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\uploads\\02.jpeg",
       "PackagePath": "staticwebassets\\uploads\\02.jpeg"
     },

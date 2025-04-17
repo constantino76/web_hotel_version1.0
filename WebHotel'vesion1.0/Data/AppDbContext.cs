@@ -52,12 +52,7 @@ namespace AppLogin.Data
                         new Rol { IdRol = 3, Nombre = "Cliente" }
                     );
             });
-            //modelBuilder.Entity<Rol>().ToTable("tb_Roles");
-            //tb.HasData(
-            //        new Rol { IdRol = 1, Nombre = "Administrador" },
-            //        new Rol { IdRol = 2, Nombre = "Empleado" },
-            //        new Rol { IdRol = 3, Nombre = "Cliente" }
-            //    );
+            
 
             // setup properties UsuarioRol
             modelBuilder.Entity<UsuarioRol>(tb =>
