@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebHotel_vesion1._0.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250220010409_002")]
-    partial class _002
+    [Migration("20250416203055_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -128,21 +128,21 @@ namespace WebHotel_vesion1._0.Migrations
                         new
                         {
                             IdRol = 1,
-                            FechaActualizacion = new DateTime(2025, 2, 20, 1, 4, 7, 758, DateTimeKind.Utc).AddTicks(3319),
+                            FechaActualizacion = new DateTime(2025, 4, 16, 20, 30, 44, 932, DateTimeKind.Utc).AddTicks(655),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Administrador"
                         },
                         new
                         {
                             IdRol = 2,
-                            FechaActualizacion = new DateTime(2025, 2, 20, 1, 4, 7, 758, DateTimeKind.Utc).AddTicks(4324),
+                            FechaActualizacion = new DateTime(2025, 4, 16, 20, 30, 44, 932, DateTimeKind.Utc).AddTicks(1750),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Empleado"
                         },
                         new
                         {
                             IdRol = 3,
-                            FechaActualizacion = new DateTime(2025, 2, 20, 1, 4, 7, 758, DateTimeKind.Utc).AddTicks(4328),
+                            FechaActualizacion = new DateTime(2025, 4, 16, 20, 30, 44, 932, DateTimeKind.Utc).AddTicks(1753),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Cliente"
                         });
