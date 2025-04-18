@@ -29,10 +29,10 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             
             }
 
-            catch {
-
-                Console.WriteLine("Ha ocurrido un error inesperado en la base de datos");
-            
+            catch (DbUpdateException ex)
+            {
+         
+                Console.WriteLine("Error al guardar cambios en la base de datos: " + ex.Message);
             }
             return true;
         }
@@ -43,9 +43,33 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             return roles;
         }
 
-        public Task<bool> UpdateRol(Rol rol)  
+        public async Task<bool> UpdateRol(Rol rol)  
         {
-            throw new NotImplementedException();
+            var rolExistente = _context.Roles.FirstOrDefault(r => r.IdRol==rol.IdRol);
+
+            if (rolExistente==null) {
+
+                Console.WriteLine("Este rol no existe en la base de datos ");
+
+                return false;
+            }
+
+
+
+            try {
+
+
+                _context.Roles.Entry(rol).CurrentValues.SetValues(rol);
+                _context.SaveChanges();
+            
+            }
+            catch (DbUpdateException ex) {
+
+                Console.WriteLine("Error al actualizar el registro");
+            return false;
+            
+            }
+            return true;
         }
     }
 }
