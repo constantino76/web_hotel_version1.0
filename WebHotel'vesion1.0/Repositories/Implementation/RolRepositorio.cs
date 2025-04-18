@@ -15,9 +15,26 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             _context = context;
         }
 
-            public Task<bool> CreateRol(Rol rol)
+            public async Task<bool> CreateRol(Rol rol)
         {
-            throw new NotImplementedException();
+            var rolExistente = _context.Roles.FirstOrDefault(r => r.IdRol == rol.IdRol);
+            if (rolExistente==null) { return false; }
+
+
+
+            try {
+
+                _context.Roles.Add(rol); //add a new rol
+                _context.SaveChanges();//save  changes
+            
+            }
+
+            catch {
+
+                Console.WriteLine("Ha ocurrido un error inesperado en la base de datos");
+            
+            }
+            return true;
         }
 
         public async Task<List<Rol>> GetRols()
