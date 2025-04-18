@@ -1,7 +1,5 @@
 ﻿using AppLogin.Data;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using NuGet.DependencyResolver;
 using WebHotel_vesion1._0.Models;
 using WebHotel_vesion1._0.Repositories.Interfaces;
 
@@ -17,29 +15,10 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             _context = context;
         }
 
-            public async Task<bool> CreateRol(Rol rol)
+            public Task<bool> CreateRol(Rol rol)
         {
-            var rolExistente = _context.Roles.FirstOrDefault(r => r.IdRol == rol.IdRol); //valided  if  exist rol in database 
-            if (rolExistente == null) return false;
-
-
-
-            try {
-
-                _context.Roles.Add(rol);// save new rol
-                _context.SaveChanges(); // necessary by savechanges in the database 
-            
-            
-            }
-
-
-            catch (SqlException ex) {
-                
-                Console.WriteLine("Error en ");
-            
-            }
-            return true;
-        } 
+            throw new NotImplementedException();
+        }
 
         public async Task<List<Rol>> GetRols()
         {

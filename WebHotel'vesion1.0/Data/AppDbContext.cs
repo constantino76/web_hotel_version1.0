@@ -46,11 +46,11 @@ namespace AppLogin.Data
                 tb.Property(col => col.FechaActualizacion).HasDefaultValueSql("GETDATE()").ValueGeneratedOnAddOrUpdate();
 
                 modelBuilder.Entity<Rol>().ToTable("tb_Roles");
-                //tb.HasData(
-                //        new Rol { IdRol = 1, Nombre = "Administrador" },
-                //        new Rol { IdRol = 2, Nombre = "Empleado" },
-                //        new Rol { IdRol = 3, Nombre = "Cliente" }
-                //    );
+                tb.HasData(
+                        new Rol { IdRol = 1, Nombre = "Administrador" },
+                        new Rol { IdRol = 2, Nombre = "Empleado" },
+                        new Rol { IdRol = 3, Nombre = "Cliente" }
+                    );
             });
             //modelBuilder.Entity<Rol>().ToTable("tb_Roles");
             //tb.HasData(
@@ -102,7 +102,7 @@ namespace AppLogin.Data
                 tb.Property(h => h.Numero).IsRequired();
                 tb.Property(h => h.Tipo).HasMaxLength(100).IsRequired();
                 tb.Property(h=>h.EstaDisponible).IsRequired();
-                tb.Property(h => h.PrecioPorNoche).HasColumnType("decimal(20,2)").IsRequired();
+                tb.Property(h => h.PrecioPorNoche).HasColumnType("decimal(18,2)").IsRequired();
                 tb.Property(h => h.imageUrl).HasMaxLength(200).IsRequired();
                 tb.ToTable("tb_Habitaciones");
             });
@@ -110,4 +110,3 @@ namespace AppLogin.Data
         }
     }
 }
-
