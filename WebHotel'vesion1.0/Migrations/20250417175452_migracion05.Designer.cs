@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebHotel_vesion1._0.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250416203055_initial")]
-    partial class initial
+    [Migration("20250417175452_migracion05")]
+    partial class migracion05
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,29 +123,6 @@ namespace WebHotel_vesion1._0.Migrations
                     b.HasKey("IdRol");
 
                     b.ToTable("tb_Roles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            IdRol = 1,
-                            FechaActualizacion = new DateTime(2025, 4, 16, 20, 30, 44, 932, DateTimeKind.Utc).AddTicks(655),
-                            FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nombre = "Administrador"
-                        },
-                        new
-                        {
-                            IdRol = 2,
-                            FechaActualizacion = new DateTime(2025, 4, 16, 20, 30, 44, 932, DateTimeKind.Utc).AddTicks(1750),
-                            FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nombre = "Empleado"
-                        },
-                        new
-                        {
-                            IdRol = 3,
-                            FechaActualizacion = new DateTime(2025, 4, 16, 20, 30, 44, 932, DateTimeKind.Utc).AddTicks(1753),
-                            FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nombre = "Cliente"
-                        });
                 });
 
             modelBuilder.Entity("WebHotel_vesion1._0.Models.Usuario", b =>

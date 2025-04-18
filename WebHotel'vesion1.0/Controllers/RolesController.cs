@@ -6,7 +6,7 @@ namespace WebHotel_vesion1._0.Controllers
 {
 
     [Authorize]
-    public class RolesController1 : Controller
+    public class RolesController : Controller
     {
         // GET: RolesController1
         [Authorize(Roles ="Administrador,Empleado")]

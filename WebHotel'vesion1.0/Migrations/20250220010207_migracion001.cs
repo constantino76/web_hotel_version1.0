@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebHotel_vesion1._0.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class migracion001 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
