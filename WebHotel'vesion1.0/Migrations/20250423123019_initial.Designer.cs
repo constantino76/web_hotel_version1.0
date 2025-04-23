@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebHotel_vesion1._0.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250220010409_002")]
-    partial class _002
+    [Migration("20250423123019_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,7 +105,7 @@ namespace WebHotel_vesion1._0.Migrations
                     b.Property<int>("IdRol")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("FechaActualizacion")
+                    b.Property<DateTime?>("FechaActualizacion")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
@@ -128,21 +128,18 @@ namespace WebHotel_vesion1._0.Migrations
                         new
                         {
                             IdRol = 1,
-                            FechaActualizacion = new DateTime(2025, 2, 20, 1, 4, 7, 758, DateTimeKind.Utc).AddTicks(3319),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Administrador"
                         },
                         new
                         {
                             IdRol = 2,
-                            FechaActualizacion = new DateTime(2025, 2, 20, 1, 4, 7, 758, DateTimeKind.Utc).AddTicks(4324),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Empleado"
                         },
                         new
                         {
                             IdRol = 3,
-                            FechaActualizacion = new DateTime(2025, 2, 20, 1, 4, 7, 758, DateTimeKind.Utc).AddTicks(4328),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Cliente"
                         });

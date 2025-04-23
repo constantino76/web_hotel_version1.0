@@ -102,7 +102,7 @@ namespace WebHotel_vesion1._0.Migrations
                     b.Property<int>("IdRol")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("FechaActualizacion")
+                    b.Property<DateTime?>("FechaActualizacion")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
@@ -125,21 +125,18 @@ namespace WebHotel_vesion1._0.Migrations
                         new
                         {
                             IdRol = 1,
-                            FechaActualizacion = new DateTime(2025, 3, 3, 3, 27, 41, 479, DateTimeKind.Utc).AddTicks(6510),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Administrador"
                         },
                         new
                         {
                             IdRol = 2,
-                            FechaActualizacion = new DateTime(2025, 3, 3, 3, 27, 41, 479, DateTimeKind.Utc).AddTicks(8367),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Empleado"
                         },
                         new
                         {
                             IdRol = 3,
-                            FechaActualizacion = new DateTime(2025, 3, 3, 3, 27, 41, 479, DateTimeKind.Utc).AddTicks(8373),
                             FechaRegistro = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Cliente"
                         });

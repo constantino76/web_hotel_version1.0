@@ -16,18 +16,18 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
         }
 
             public async Task<bool> CreateRol(Rol rol)
-        {
+        {  // Validamos que el idRol no exista 
             var rolExistente = _context.Roles.FirstOrDefault(r => r.IdRol == rol.IdRol);
             if (rolExistente!=null) { return false; }
 
 
-            rol.FechaActualizacion = DateTime.Now;
-            rol.FechaActualizacion = null;
+           
             try {
+                rol.FechaRegistro= DateTime.Now;
+                rol.FechaActualizacion = null;
 
-
-                _context.Roles.Add(rol); //add a new rol
-                _context.SaveChanges();//save  changes
+                _context.Roles.AddAsync(rol); //add a new rol
+                _context.SaveChangesAsync();//save  changes
             
             }
 

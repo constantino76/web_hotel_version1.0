@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WebHotel_vesion1._0.Repositories.Interfaces;
 
 namespace WebHotel_vesion1._0.Models
 {
-    public class Usuario   
+    public class Usuario:IFechas
     {
         [RegularExpression("^([0][1-9]-[0-9]{4}-[0-9]{4})|([0-9]-[0-9]{3}-[0-9]{6})$",
            ErrorMessage = "Formato de cedula  invalido Fisica = 0#-####-####   Juridica =#-###-######")]
@@ -11,7 +12,7 @@ namespace WebHotel_vesion1._0.Models
         public string NombreCompleto { get; set; }
         public string Correo { get; set; }
         public string Clave { get; set; }
-        public DateTime? FechaRegistro { get; set; }
+        public DateTime FechaRegistro { get; set; }
         public DateTime? FechaActualizacion { get; set; } 
         public string? ImageUrl { get; set; }
         public ICollection<UsuarioRol> UsuarioRoles { get; set; }

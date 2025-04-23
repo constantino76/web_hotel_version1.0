@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebHotel_vesion1._0.Models;
+using WebHotel_vesion1._0.Repositories.Interfaces;
 
 namespace AppLogin.Data
 {
@@ -26,7 +27,7 @@ namespace AppLogin.Data
                 tb.Property(col => col.Clave).HasMaxLength(20000).IsRequired();
                 tb.Property(col => col.ImageUrl).IsRequired();
             tb.Property(col => col.FechaRegistro) .HasDefaultValueSql("GETDATE()");
-                tb.Property(col=>col.FechaActualizacion).HasDefaultValueSql("GETDATE()").ValueGeneratedOnAddOrUpdate();
+                tb.Property(col => col.FechaActualizacion).IsRequired(false); // permite valores null, sin default, sin generación automática
 
                 modelBuilder.Entity<Usuario>().ToTable("tb_Usuarios");
               
@@ -43,7 +44,7 @@ namespace AppLogin.Data
                 tb.Property(col => col.Nombre).HasMaxLength(50).IsRequired();
 
                 tb.Property(col => col.FechaRegistro).HasDefaultValueSql("GETDATE()");
-                tb.Property(col => col.FechaActualizacion).HasDefaultValueSql("GETDATE()").ValueGeneratedOnAddOrUpdate();
+                tb.Property(col => col.FechaActualizacion).IsRequired(false); // permite valores null, sin default, sin generación automática
 
                 modelBuilder.Entity<Rol>().ToTable("tb_Roles");
                 tb.HasData(
@@ -108,5 +109,18 @@ namespace AppLogin.Data
             });
 
         }
+        public override int SaveChanges()
+        {
+            var entidadesModificadas = ChangeTracker.Entries<IFechas>()
+                .Where(e => e.State == EntityState.Modified);
+
+            foreach (var entidad in entidadesModificadas)
+            {
+                entidad.Entity.FechaActualizacion = DateTime.Now;
+            }
+
+            return base.SaveChanges();
+        }
     }
 }
+

@@ -39,8 +39,8 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
                 }
 
 
-              
-
+                usuario.FechaRegistro = DateTime.Now;
+                usuario.FechaActualizacion = null;
                 _context.Usuarios.Add(usuario);
                 _context.SaveChanges();
 

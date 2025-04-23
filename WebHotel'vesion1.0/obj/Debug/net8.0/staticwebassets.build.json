@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gIANuVnTQoYuJNB52rpG74a2ks9UApKSIjg9SezTcqU=",
+  "Hash": "+iSu4NY/gTK6rqWRdyNvzuObXbtOkCkRiQNMmagnSsw=",
   "Source": "WebHotelvesion1.0",
   "BasePath": "_content/WebHotelvesion1.0",
   "Mode": "Default",
@@ -40487,12 +40487,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\a0fb3aae-7844-49b7-b33f-0b4012a14db5.jpg",
+      "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\04.jpeg",
       "SourceId": "WebHotelvesion1.0",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\",
       "BasePath": "_content/WebHotelvesion1.0",
-      "RelativePath": "profile/a0fb3aae-7844-49b7-b33f-0b4012a14db5.jpg",
+      "RelativePath": "profile/04.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -40503,7 +40503,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\profile\\a0fb3aae-7844-49b7-b33f-0b4012a14db5.jpg"
+      "OriginalItemSpec": "wwwroot\\profile\\04.jpeg"
+    },
+    {
+      "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\05.jpeg",
+      "SourceId": "WebHotelvesion1.0",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\",
+      "BasePath": "_content/WebHotelvesion1.0",
+      "RelativePath": "profile/05.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\profile\\05.jpeg"
     },
     {
       "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotel'vesion1.0\\wwwroot\\profile\\e7224031-d460-4ec9-8a75-e424bfdece1c.jpg",
