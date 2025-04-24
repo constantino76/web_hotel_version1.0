@@ -17,7 +17,7 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
             public async Task<bool> CreateRol(Rol rol)
         {  // Validamos que el idRol no exista 
-            var rolExistente = _context.Roles.FirstOrDefault(r => r.IdRol == rol.IdRol);
+            var rolExistente = await _context.Roles.FirstOrDefaultAsync(r => r.IdRol == rol.IdRol);
             if (rolExistente!=null) { return false; }
 
 
@@ -26,8 +26,8 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
                 rol.FechaRegistro= DateTime.Now;
                 rol.FechaActualizacion = null;
 
-                _context.Roles.AddAsync(rol); //add a new rol
-                _context.SaveChangesAsync();//save  changes
+               await  _context.Roles.AddAsync(rol); //add a new rol
+               await  _context.SaveChangesAsync();//save  changes
             
             }
 
@@ -42,12 +42,12 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
         public async Task<List<Rol>> GetRols()
         {
             List<Rol> roles = await _context.Roles.ToListAsync();
-            return roles;
+            return  roles;
         }
 
         public async Task<bool> UpdateRol(Rol rol)  
         {
-            var rolExistente = _context.Roles.FirstOrDefault(r => r.IdRol==rol.IdRol);
+            var rolExistente = await _context.Roles.FirstOrDefaultAsync(r => r.IdRol==rol.IdRol);
 
             if (rolExistente==null) {
 
@@ -62,7 +62,7 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
 
                 _context.Roles.Entry(rol).CurrentValues.SetValues(rol);
-                _context.SaveChanges();
+               await  _context.SaveChangesAsync();
             
             }
             catch (DbUpdateException ex) {

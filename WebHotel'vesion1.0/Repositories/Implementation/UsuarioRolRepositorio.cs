@@ -20,7 +20,7 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             };
 
 
-            _context.UsuarioRols.AddAsync(user);
+           await  _context.UsuarioRols.AddAsync(user);
             _context.SaveChanges();
             return true;
         
@@ -37,7 +37,7 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
 
            await  _context.UsuarioRols.AddAsync(usuariorol);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return true;
         
         

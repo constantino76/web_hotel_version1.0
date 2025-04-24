@@ -59,7 +59,7 @@ namespace WebHotel_vesion1._0.Controllers
         };
 
 
-            return View(usuariorol);
+            return  View(usuariorol);
         }
 
 
@@ -151,6 +151,7 @@ namespace WebHotel_vesion1._0.Controllers
         {
             var id_ = id;
             var user = await _iusuario.getUser(id);
+            List<Rol> listroles = await _irol.GetRols();
             var usuariorol = new UsuarioViewModel
             {
                 IdUsuario = user.IdUsuario,
@@ -158,7 +159,7 @@ namespace WebHotel_vesion1._0.Controllers
                 Correo = user.Correo, 
                 Clave=user.Clave,
                 imageUrl=user.ImageUrl,
-                Roles = await _irol.GetRols()
+                Roles =listroles
 
             };
             return View(usuariorol);
@@ -182,6 +183,12 @@ namespace WebHotel_vesion1._0.Controllers
             }
 
            Usuario olduser = await _iusuario.getUser(userviewmodel.IdUsuario);
+            var roles = new UsuarioViewModel
+            { // almacenamos los roles en la vista para que en caso de retorno no de null a momento de listar los roles 
+                Roles = await _irol.GetRols()
+
+
+            };
             if (olduser == null) {
 
                 return Content("No se encontro el registro en el sistema");
@@ -244,7 +251,7 @@ namespace WebHotel_vesion1._0.Controllers
                     };
 
                 
-                    _usuarioRol.UpdateUserRol(usuariorol);
+                  await   _usuarioRol.UpdateUserRol(usuariorol);
             }
             }
             catch
@@ -253,11 +260,8 @@ namespace WebHotel_vesion1._0.Controllers
                 return View();
             }
             
-            var roles = new UsuarioViewModel { // almacenamos los roles en la vista para que en caso de retorno no de null a momento de listar los roles 
-                Roles = await  _irol.GetRols() 
-            
-            
-            };
+           
+           // return View();
             return RedirectToAction("listar_Empleados");
         }
 

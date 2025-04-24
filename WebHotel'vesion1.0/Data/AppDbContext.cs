@@ -117,9 +117,10 @@ namespace AppLogin.Data
             foreach (var entidad in entidadesModificadas)
             {
                 entidad.Entity.FechaActualizacion = DateTime.Now;
+                
             }
 
-            return base.SaveChanges();
+            return  base.SaveChanges();
         }
     }
 }

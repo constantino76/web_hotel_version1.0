@@ -139,11 +139,11 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
                 if (usuarioExistente == null)
                 {
                     return false; // Si no existe, no se puede actualizar
-                }
+                } usuario.FechaRegistro = usuarioExistente.FechaRegistro;
 
-                _context.Entry(usuarioExistente).CurrentValues.SetValues(usuario);
-
-               await  _context.SaveChangesAsync();
+                 _context.Entry(usuarioExistente).CurrentValues.SetValues(usuario);
+                _context.SaveChanges();
+                // await  _context.SaveChangesAsync();
 
                 //_context.Entry(habitacionExistente).CurrentValues.SetValues(habitacionExistente);
 
