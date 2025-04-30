@@ -9,24 +9,24 @@ namespace WebHotel_vesion1._0.Controllers
 
     [Authorize]
     public class RolesController : Controller
-    { 
-         private readonly IRol _irol;
-    
+    {
+        private readonly IRol _irol;
+
 
         public RolesController(IRol irol) {
-        _irol=irol; 
-        
+            _irol = irol;
+
         }
         // GET: RolesController1
-        [Authorize(Roles ="Administrador,Empleado")]
-        public  async Task< ActionResult> ListarRoles()
-        { List<Rol>listRoles= await _irol.GetRols();   
+        [Authorize(Roles = "Administrador,Empleado")]
+        public async Task<ActionResult> ListarRoles()
+        { List<Rol> listRoles = await _irol.GetRols();
             return View(listRoles);
         }
 
-       
 
-        
+
+
         public ActionResult Create()
         {
             return View();
@@ -35,26 +35,31 @@ namespace WebHotel_vesion1._0.Controllers
         // POST: RolesController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Rol rol)
+        public async Task< IActionResult> Create(Rol rol)
         {
-            _irol.CreateRol(rol);
+           await  _irol.CreateRol(rol);
             return RedirectToAction("ListarRoles");
         }
 
         // GET: RolesController1/Edit/5
-        public ActionResult Edit(int id)
+        [Authorize(Roles ="Administrador")]
+        public async Task< ActionResult> Edit(int id)
         {
-            return View();
+            Rol rol = await _irol.SearchRol(id);
+            return View(rol);
         }
 
         // POST: RolesController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task< ActionResult> Edit(Rol rolUpdate)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+               await  _irol.UpdateRol(rolUpdate);
+
+
+                return RedirectToAction(nameof(ListarRoles));
             }
             catch
             {
@@ -63,24 +68,29 @@ namespace WebHotel_vesion1._0.Controllers
         }
 
         // GET: RolesController1/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
+
         {
-            return View();
+           Rol rol = await  _irol.SearchRol(id);
+            
+            
+            return View(rol);
         }
 
         // POST: RolesController1/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+    
+        public async Task<ActionResult> DeleteUser(int IdRol)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                await _irol.DeleteRol(IdRol);
             }
             catch
             {
-                return View();
+               
             }
+            return RedirectToAction("ListarRoles");
         }
     }
 }

@@ -47,11 +47,11 @@ namespace AppLogin.Data
                 tb.Property(col => col.FechaActualizacion).IsRequired(false); // permite valores null, sin default, sin generación automática
 
                 modelBuilder.Entity<Rol>().ToTable("tb_Roles");
-                tb.HasData(
-                        new Rol { IdRol = 1, Nombre = "Administrador" },
-                        new Rol { IdRol = 2, Nombre = "Empleado" },
-                        new Rol { IdRol = 3, Nombre = "Cliente" }
-                    );
+                //tb.HasData(
+                //        new Rol { IdRol = 1, Nombre = "Administrador" },
+                //        new Rol { IdRol = 2, Nombre = "Empleado" },
+                //        new Rol { IdRol = 3, Nombre = "Cliente" }
+                //    );
             });
             //modelBuilder.Entity<Rol>().ToTable("tb_Roles");
             //tb.HasData(

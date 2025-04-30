@@ -59,10 +59,10 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
 
             try {
+                rolExistente.Nombre = rol.Nombre;
 
-
-                _context.Roles.Entry(rol).CurrentValues.SetValues(rol);
-               await  _context.SaveChangesAsync();
+                //_context.Roles.Entry(rol).CurrentValues.SetValues(rol);
+              int resultado= await  _context.SaveChangesAsync();
             
             }
             catch (DbUpdateException ex) {
@@ -72,6 +72,33 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             
             }
             return true;
+        }
+
+        public async Task<Rol> SearchRol(int id) {
+
+           Rol  rol =await  _context.Roles.FirstOrDefaultAsync(r => r.IdRol == id);
+
+
+            if (rol==null) { return null; 
+            
+            
+            
+            }
+            return rol;
+        }
+        public async Task<int> DeleteRol(int id) {
+
+            var RolDelete =await  _context.Roles.FirstOrDefaultAsync(r => r.IdRol == id);
+
+            if (RolDelete==null) {
+                Console.WriteLine("No se encontro el rol");
+
+                return 0;
+            
+            }
+           _context.Roles.Remove(RolDelete);
+           int result = await _context.SaveChangesAsync();
+            return result;
         }
     }
 }
