@@ -152,6 +152,7 @@
                                     <div class="form-group">
                                         <label for="IdRol" class="control-label">Rol</label>
                                         <select name="IdRol" class="form-control bg-light text-dark" required>
+                                        <option value="" disabled selected>Seleccione un rol</option>  @*obliga selecionar una opcion  *@
                                             @foreach (var rol in Model.Roles)
                                             {
                                                 <option value="@rol.IdRol">@rol.Nombre</option>

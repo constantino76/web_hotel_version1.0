@@ -109,7 +109,11 @@
 
                                 <label for="IdRol"> Rol</label>
                                 <span></span>
-                                <select name="IdRol" class="form-control bg-primary text-dark">
+                                <select name="IdRol" class="form-control bg-primary text-dark" required>
+                                    <option value="" disabled selected>Seleccione un rol</option>  @*obliga selecionar una opcion  *@
+
+
+
                                     @foreach (var rol in Model.Roles)
                                     {
 
