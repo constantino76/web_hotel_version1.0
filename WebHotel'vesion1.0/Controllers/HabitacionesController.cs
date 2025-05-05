@@ -120,7 +120,7 @@ namespace WebHotel_vesion1._0.Controllers
             }
 
 
-            return View();
+            return  RedirectToAction("Create");
         }
 
         // GET: HabitacionesController/Edit/5

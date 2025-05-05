@@ -11,7 +11,7 @@
 <div class="row justify-content-center">
 <div class="col-12 col-md-6">
 
-    <div class="card card-primary shadow-lg">
+    <div class="card card-primary shadow-lg"style="background-color:black">
 
             <div class="card-title text-danger p-2"><i class="fa-solid fa-circle-exclamation"></i><h3>Esta  seguro que desea eliminar este usuario</h3>
                 </div>
@@ -24,7 +24,7 @@
                         <form asp-action="DeleteUser" method="post" >
                             <div class="row">
                        <div class="col-6">
-                                    <label>Nombre</label><span></span>
+                                    <label class="text-white">Nombre</label><span></span>
                                     <div class="form-group">
                                        
 
@@ -33,9 +33,10 @@
 
 
                        </div>
+                       <hr />
 
                                 <div class="col-6">
-                                    <label>Correo</label>
+                                    <label class="text-white">Correo</label>
                                     <div class="form-group">
 
                                       
@@ -56,7 +57,7 @@
                          
                                <div class="row justify-content-center">
 
-                                   <div class="col-12 col-md-6">
+                                   <div class="col-md-6">
 
                                     <img id="imagenPrevisualizacion" src="@Url.Content("~/"+Model.ImageUrl)" class="card-image " style="width:200px;height:200px; border;1px solid whiteSmoke;border-radius:50%">
 
@@ -71,7 +72,7 @@
 
                                </div>
                               
-                            <div class="row">
+                            <div class="row justify-content-center">
 
                                 <div class="col-4">
                                         <input type="hidden" asp-for="IdUsuario" />
