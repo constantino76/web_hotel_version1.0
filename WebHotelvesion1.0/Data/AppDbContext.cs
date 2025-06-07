@@ -14,6 +14,7 @@ namespace AppLogin.Data
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Habitacion> Habitacion { get; set; }
         public DbSet<UsuarioRol> UsuarioRols { get; set; }  
+        public DbSet<Reserva> Tb_Reservas { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
