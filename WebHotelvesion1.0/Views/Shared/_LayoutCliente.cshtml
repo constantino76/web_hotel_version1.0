@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Hotel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            padding-top: 70px;
+            overflow-x: hidden; /* ✅ Evita scroll horizontal */
+        }
+    </style>
+</head>
+<body>
+
+
+    @{
+        var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+        var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    }
+
+    <!-- Navbar Cliente -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-action="index" asp-controller="Home">
+                <span class="d-none d-sm-inline">🏨</span> Hotel
+            </a>
+
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavCliente" aria-controls="navbarNavCliente" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavCliente">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="index" asp-controller="Home">Home</a>
+                    </li>
+
+                    @* se controla el contenido a mostrar en la vista  a renderizar  *@
+                    @if(currentController=="Home"&&currentAction=="Index")
+                    {
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#resenia">Reseña</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#galeria">Galería</a>
+                        </li>
+
+                    }
+
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Acceso" asp-action="Logout">Cerrar sesión</a>
+                        </li>
+                    }
+                    else if(!User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Acceso" asp-action="Login">Iniciar  sesión</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   
+        @*  <main class="container mt-4">
+        @RenderBody()
+    </main>
+     *@
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

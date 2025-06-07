@@ -1,0 +1,98 @@
+﻿<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jQuery UI -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+@{
+
+    @model WebHotel_vesion1._0.Models.Habitacion;
+    ViewData["Title"] = "Detalle";
+}
+
+
+
+<div class="container container-fluid">
+
+    <div class="row justify-content-center mt-5">
+
+<div class="col col-md-8">
+
+    <div class=" card  shadow-lg border-0">
+
+        <h2 class="card-header bg-info text-center">Detalles</h2>
+        <div class="card-body">
+
+
+            <div class="row">
+
+                <div class="col-5">
+
+
+
+                            <label><strong>Id : </strong>@Model.Id</label>
+                </div>
+
+                        <div class="col col-md-5">
+                            <label><strong>Descripcion:</strong> @Model.Descripcion</label>
+                        </div>
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-5">
+
+
+
+                    <img  src="@Url.Content("~/"+Model.imageUrl)" class="w-100"/>
+                </div>
+                <div class="col-md-5 mt-5">
+                    <a asp-action="Reserva" asp-route-id="@Model.Numero" class="btn  btn-info w-100 text-white">Reservar Habitacion </a>
+                    </div>
+            </div>
+
+            @* inputs para las fechas *@
+
+
+            <div class="row justify-content-center mt-4">
+
+
+               <div class="col-md-5">
+
+                            <input type="date" id="fechainicio"  required/>
+
+
+               </div>
+                        <div class="col-md-5">
+
+                            <input type="date" id="fechafin" required />
+
+
+                        </div>
+
+
+
+
+                    </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+       
+    </div>
+
+
+
+
+
+</div>
+
+
