@@ -66,7 +66,7 @@
                                         @Html.DisplayFor(modelItem => item.PrecioPorNoche)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.EstaDisponible)
+                                       <input type="checkbox" enable id="@item.EstaDisponible"/>
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Descripcion)
@@ -77,10 +77,10 @@
 
                                     </td>
                                 <td class="d-flex gap-4 mt-2">
-                                        <a asp-action="Edit" asp-route-id="@item.Numero" class="btn btn-lg bg-warning text-white"><i class="fa-solid fa-user-pen text-white"></i>Editar</a>
-                                        <a asp-action="Details" asp-route-id="@item.Numero" class="btn btn-lg bg-primary"><i class="fa-regular fa-eye"></i>Ver</a>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-lg bg-warning text-white"><i class="fa-solid fa-user-pen text-white"></i>Editar</a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-lg bg-primary"><i class="fa-regular fa-eye"></i>Ver</a>
 
-                                        <a asp-action="Delete" asp-route-id="@item.Numero" class="btn btn-lg bg-danger"><i class="fa-solid fa-trash"></i>Eliminar</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-lg bg-danger"><i class="fa-solid fa-trash"></i>Eliminar</a>
                                     </td>
                                 </tr>
                             }
@@ -131,6 +131,9 @@
                                          margin-left:2px
                                             
                                             }
-                                          
 
+                                
+                                        
                                         </style>
+
+                                          

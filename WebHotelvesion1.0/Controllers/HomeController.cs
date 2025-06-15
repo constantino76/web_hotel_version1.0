@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 using WebHotel_vesion1._0.Models;
 using WebHotel_vesion1._0.Repositories.Interfaces;
 
@@ -80,6 +81,9 @@ namespace WebHotel_vesion1._0.Controllers
         {
             List<Habitacion> listhabitaciones = await _habitacion.ListarHabitaciones();
 
+            //var UserName = User.Identity.Name;
+            //var UserId = User.FindFirstValue("IdUsuario");
+            //Console.WriteLine("Usuario id",UserId);
             return View(listhabitaciones);
         }
 

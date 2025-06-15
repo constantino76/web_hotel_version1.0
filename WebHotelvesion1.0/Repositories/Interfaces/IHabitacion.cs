@@ -12,9 +12,9 @@ namespace WebHotel_vesion1._0.Repositories.Interfaces
 
 
         public Task<List<Habitacion>> ListarHabitaciones();
-        public Task<Habitacion> getHabitacion(string id);
+        public Task<Habitacion> getHabitacion(int id);
         public Task <bool>ActualizarHabitacion(Habitacion habitacion );
-        public Task<bool> DeleteHabitacion(string id);
+        public Task<bool> DeleteHabitacion(int id);
 
     }
 }

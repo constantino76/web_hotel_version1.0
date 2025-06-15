@@ -126,7 +126,7 @@
                         <p class="card-text">@habitacion.Descripcion</p>
                         <p class="card-text"><strong>₡@habitacion.PrecioPorNoche</strong></p>
                         @if (User.Identity.IsAuthenticated) { //validamos que el usuario este autenticado
-                        <a href="@Url.Action("Detalle", "Habitaciones", new { id = habitacion.Numero })" class="btn btn-primary w-100">Ver detalles </a>
+                        <a href="@Url.Action("Detalle", "Habitaciones", new { id = habitacion.Id })" class="btn btn-primary w-100">Ver detalles </a>
                    
                         }
                     

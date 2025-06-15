@@ -20,15 +20,12 @@ namespace WebHotel_vesion1._0.Controllers
         }
 
         // GET: ReservasController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+       
 
         // POST: ReservasController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult EfectuarReservacion(IFormCollection collection)
         {
             try
             {

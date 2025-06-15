@@ -4,7 +4,8 @@
     {
 
         public int Id { get; set; }
-        public DateTime FechaReserva { get; set; } // Fecha en que se realiza la reserva
+        public DateTime FechadIngreso { get; set; } // Fecha en que se realiza la reserva
+        public DateTime FechaSalida {  get; set;  }
         public string UsuarioId { get; set; } // Cliente que reserva
         public Usuario Usuario { get; set; } // Relación con Usuario
         public int HabitacionId { get; set; } // Habitación reservada

@@ -8533,8 +8533,12 @@
       "PackagePath": "staticwebassets\\uploads\\00.jpeg"
     },
     {
-      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotelvesion1.0\\wwwroot\\uploads\\be2836a9-3b14-475d-a899-e100213bb3a9.PNG",
-      "PackagePath": "staticwebassets\\uploads\\be2836a9-3b14-475d-a899-e100213bb3a9.PNG"
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotelvesion1.0\\wwwroot\\uploads\\02.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\02.jpeg"
+    },
+    {
+      "Id": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotelvesion1.0\\wwwroot\\uploads\\fbd74ebd-951e-4d07-b02e-10b3517c66ac.PNG",
+      "PackagePath": "staticwebassets\\uploads\\fbd74ebd-951e-4d07-b02e-10b3517c66ac.PNG"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebHotelvesion1.0.Microsoft.AspNetCore.StaticWebAssets.props",

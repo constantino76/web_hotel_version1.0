@@ -82,7 +82,8 @@ namespace AppLogin.Data
             {
                 tb.HasKey(r => r.Id);
                 tb.Property(r => r.MetodoPago).HasMaxLength(20).IsRequired();
-                tb.Property(r => r.FechaReserva).IsRequired();
+                tb.Property(r => r.FechadIngreso).IsRequired();
+                tb.Property(r => r.FechaSalida).IsRequired();
                 tb.Property(r => r.Confirmado).HasDefaultValue(false);
 
                 tb.HasOne(r => r.Usuario)

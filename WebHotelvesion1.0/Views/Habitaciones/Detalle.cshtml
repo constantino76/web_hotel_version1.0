@@ -4,12 +4,54 @@
 <!-- jQuery UI -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-
+@using System.Security.Claims
 @{
 
     @model WebHotel_vesion1._0.Models.Habitacion;
     ViewData["Title"] = "Detalle";
 }
+
+<div class="container">
+
+   <h2>@User.Identity.Name</h2>
+    @{
+        string cedula = User.FindFirstValue("IdUsuario");
+
+      }
+    <label>@cedula</label>
+
+</div>
+
+    <div class="container "style="padding-left:12%">
+    <div class="row">
+
+        <div class="col col-md-8">
+            <div class="row row-no-gutters justify-content-center mt-4  contenedor-fechas">
+
+
+                <div class="col col-md-6 col-fecha">
+
+                    <input type="date" id="FechaInicio" name="FechaInicio" required />
+
+
+                </div>
+                <div class=" col col-md-6 col-fecha">
+
+                    <input type="date" id="FechaFin" name="FechaFin" required />
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+        </div>
+    
+    </div>
+
 
 
 
@@ -19,15 +61,21 @@
 
 <div class="col col-md-8">
 
-    <div class=" card  shadow-lg border-0">
+    <div class=" card  shadow-lg border-0  bg-primary">
 
-        <h2 class="card-header bg-info text-center">Detalles</h2>
+        <h2 class="card-header bg-black text-center">Detalles</h2>
         <div class="card-body">
+                  
 
 
-            <div class="row">
 
-                <div class="col-5">
+
+
+            </div>
+
+            <div class="row justify-content-center">
+                
+                <div class="col col-md-5">
 
 
 
@@ -40,42 +88,68 @@
             </div>
 
 
-            <div class="row">
+            <div class="row justify-content-center">
 
-                <div class="col-md-5">
+                <div class="col-md-8">
 
 
 
                     <img  src="@Url.Content("~/"+Model.imageUrl)" class="w-100"/>
                 </div>
-                <div class="col-md-5 mt-5">
-                    <a asp-action="Reserva" asp-route-id="@Model.Numero" class="btn  btn-info w-100 text-white">Reservar Habitacion </a>
                     </div>
-            </div>
+                
 
+            <div class="row mt-2 border-0 mb-0">
+
+
+                        <form asp-action="EfectuarReservacion" asp-controller="Reservas" method="post" id="form-Reserva">
+
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+
+                                      <input type="hidden" value="@Model.Id" name="Id">
+                                    </div>
+
+
+                                    <input type="text" id="_ckeck-in" name="ckeck-in"/>
+                                    <input  type="date" id="check-out" name="ckeck-out"/>
+                                </div>
+                                @* campos de las fechas *@
+                               
+
+                                <div class="row justify-content-center mt-5 mb-2">
+
+                                    <div class="col col-md-6">
+                                        <input type="submit" value="Reservar" class="btn  btn-warning w-100 text-white" />
+
+
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                            
+
+
+
+                        </form>
+
+            </div>
+                          
+                   
             @* inputs para las fechas *@
 
 
-            <div class="row justify-content-center mt-4">
-
-
-               <div class="col-md-5">
-
-                            <input type="date" id="fechainicio"  required/>
-
-
-               </div>
-                        <div class="col-md-5">
-
-                            <input type="date" id="fechafin" required />
-
-
-                        </div>
-
-
-
-
-                    </div>
+           
 
 
         </div>
@@ -85,14 +159,66 @@
 
 
 
-</div>
        
-    </div>
+    
 
 
 
 
 
 </div>
+</div>
 
 
+<style>
+
+    body{background-color:darkslategray}
+    #FechaInicio ,#FechaFin{
+    cursor:pointer;
+   color:white;
+  background-color:black;
+    font-weight:700
+    
+    }
+
+    .contenedor-fechas{
+
+      
+        background-color:black;
+        justify-content:center;
+       border:2px  solid whitesmoke;
+        margin-left:15%
+    
+    }
+    
+
+
+
+
+</style>
+
+<script>
+    const formReserva = document.getElementById("form-Reserva");
+
+    formReserva, addEventListener('submit', function (e) {
+
+        const inputFechaInicio = new Date(document.getElementById("FechaInicio").value);
+
+        const inputFechaFinal = new Date(document.getElementById("FechaFin").value);
+        document.getElementById("ckeck-in").value = inputFechaInicio;
+        
+        if (inputFechaInicio>inputFechaFinal) {
+            alert("Invalidate dates retry againt")
+        
+            e.preventDefault();
+          
+        
+        }
+        e.preventDefault();
+
+    
+    });
+
+    
+
+</script>

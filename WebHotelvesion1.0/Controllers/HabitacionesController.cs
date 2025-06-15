@@ -39,7 +39,7 @@ namespace WebHotel_vesion1._0.Controllers
 
         // GET: HabitacionesController/Details/5
         [Authorize(Roles ="Administrador,Empleado")]
-        public  async Task<ActionResult> Details(string id)
+        public  async Task<ActionResult> Details(int id)
         {
             Habitacion  habitaciondetalles = await  _ihabitacion.getHabitacion(id);
 
@@ -128,7 +128,7 @@ namespace WebHotel_vesion1._0.Controllers
 
         // GET: HabitacionesController/Edit/5
         [Authorize(Roles ="Administrador,Empleado")]
-        public async Task< ActionResult> Edit(string  id)
+        public async Task< ActionResult> Edit(int  id)
         { Habitacion  habitacionupdate = await _ihabitacion.getHabitacion(id);
             return View(habitacionupdate);
 
@@ -145,7 +145,7 @@ namespace WebHotel_vesion1._0.Controllers
                 return BadRequest("Datos inválidos");
             }
 
-            var habitacionExistente = await _ihabitacion.getHabitacion(habitacion.Numero);
+            var habitacionExistente = await _ihabitacion.getHabitacion(habitacion.Id);
 
             if (habitacionExistente == null)
             {
@@ -210,8 +210,8 @@ namespace WebHotel_vesion1._0.Controllers
 
         // metodo para ver mas informacion relacionada con la habitacion 
         public async Task<IActionResult> Detalle(int id) {
-            string id_ = Convert.ToString(id);
-            Habitacion habitacionDetalle = await _ihabitacion.getHabitacion(id_);
+      
+            Habitacion habitacionDetalle = await _ihabitacion.getHabitacion(id);
             return View(habitacionDetalle);
         
         }
@@ -221,7 +221,7 @@ namespace WebHotel_vesion1._0.Controllers
 
         // GET: HabitacionesController/Delete/5
         [Authorize(Roles ="Administrador")]
-        public async Task<IActionResult>  Delete(string  id)
+        public async Task<IActionResult>  Delete(int  id)
         {
             Habitacion habitacion= new Habitacion();
             habitacion= await _ihabitacion.getHabitacion(id);
@@ -235,11 +235,11 @@ namespace WebHotel_vesion1._0.Controllers
         // POST: HabitacionesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteHabitacion(string  Numero)
+        public ActionResult DeleteHabitacion(int id )
         {
             try
             {
-                _ihabitacion.DeleteHabitacion(Numero);
+                _ihabitacion.DeleteHabitacion(id);
 
 
                 return RedirectToAction(nameof(listarHabitaciones));

@@ -23,7 +23,7 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             throw new NotImplementedException();
         }
 
-        public Task<Reserva> CrearReserva()
+        public Task<Reserva> CrearReserva(Reserva  nuevareserva)
         {
             throw new NotImplementedException();
         }

@@ -58,11 +58,11 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
 
             return true;
         }
-        public async  Task<bool> DeleteHabitacion(string id)
+        public async  Task<bool> DeleteHabitacion(int id)
         {
             try {
                
-                var habitaciondelete =  _context.Habitacion.FirstOrDefault(e => e.Numero== id);
+                var habitaciondelete =  _context.Habitacion.FirstOrDefault(e => e.Id== id);
 
 
                 if (habitaciondelete != null) { 
@@ -82,9 +82,9 @@ namespace WebHotel_vesion1._0.Repositories.Implementation
             return true;
         }
 
-        public async  Task<Habitacion> getHabitacion(string id)
+        public async  Task<Habitacion> getHabitacion(int id)
 
-        {   Habitacion  habitacion = _context.Habitacion.FirstOrDefault(e => e.Numero == id);
+        {   Habitacion  habitacion = _context.Habitacion.FirstOrDefault(e => e.Id == id);
             return   habitacion;
         }
 

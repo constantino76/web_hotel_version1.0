@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Y05EYe8M7bFKFJwuZC88Q2s1tmaefo8jI8XX1AWd4tc=",
+  "Hash": "urFsdTH65dn86ZJdSb17EWCwWD9aqBPhmflwj6UfvwI=",
   "Source": "WebHotelvesion1.0",
   "BasePath": "_content/WebHotelvesion1.0",
   "Mode": "Default",
@@ -40563,12 +40563,12 @@
       "OriginalItemSpec": "wwwroot\\uploads\\00.jpeg"
     },
     {
-      "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotelvesion1.0\\wwwroot\\uploads\\be2836a9-3b14-475d-a899-e100213bb3a9.PNG",
+      "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotelvesion1.0\\wwwroot\\uploads\\02.jpeg",
       "SourceId": "WebHotelvesion1.0",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotelvesion1.0\\wwwroot\\",
       "BasePath": "_content/WebHotelvesion1.0",
-      "RelativePath": "uploads/be2836a9-3b14-475d-a899-e100213bb3a9.PNG",
+      "RelativePath": "uploads/02.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -40579,7 +40579,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\be2836a9-3b14-475d-a899-e100213bb3a9.PNG"
+      "OriginalItemSpec": "wwwroot\\uploads\\02.jpeg"
+    },
+    {
+      "Identity": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotelvesion1.0\\wwwroot\\uploads\\fbd74ebd-951e-4d07-b02e-10b3517c66ac.PNG",
+      "SourceId": "WebHotelvesion1.0",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\CursosWeb\\WebHotel'vesion1.0\\WebHotelvesion1.0\\wwwroot\\",
+      "BasePath": "_content/WebHotelvesion1.0",
+      "RelativePath": "uploads/fbd74ebd-951e-4d07-b02e-10b3517c66ac.PNG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\fbd74ebd-951e-4d07-b02e-10b3517c66ac.PNG"
     }
   ]
 }

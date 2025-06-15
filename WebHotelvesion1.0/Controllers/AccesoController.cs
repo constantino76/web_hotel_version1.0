@@ -43,7 +43,8 @@ namespace WebHotel_vesion1._0.Controllers
             {
                 var claims = new List<Claim> {
                     new Claim(ClaimTypes.Name,user.NombreCompleto),
-                       new Claim("Correo",user.Correo)
+                       new Claim("Correo",user.Correo),
+                       new Claim("IdUsuario",user.IdUsuario)
                      };
 
                 foreach (var rol in user.UsuarioRoles)

@@ -20,14 +20,16 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
  }
  );
-
+// inyeccion del contexto de la base de datos 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConexionPorDefecto")));
 
+// Inyeccion de dependencias de las interfaces y sus clases
 builder.Services.AddScoped<IUsuario, UsuarioRepositorio>();
 builder.Services.AddScoped<IRol,RolRepositorio>();
 builder.Services.AddScoped<IUsuarioRol,UsuarioRolRepositorio>();
 builder.Services.AddScoped<IHabitacion, HabitacionRepositorio>();
+builder.Services.AddScoped<IReserva,ReservaRepositorio>();
 
 var app = builder.Build();
 
